@@ -29,6 +29,7 @@ namespace ConsoleApp1
                 case 17:new TicTacToe(); break;
                 case 18:new VendingMachine(); break;
                 case 19: new TemperatureConversion(); break;
+                case 20:new MonthlyPayment(); break;
                 default:Console.WriteLine("invalid Entry"); break;
             }
 
