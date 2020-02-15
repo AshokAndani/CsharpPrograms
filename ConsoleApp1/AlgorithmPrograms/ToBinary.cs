@@ -11,7 +11,7 @@ namespace ConsoleApp1
             Console.Write("enter the number for its binary form: ");
             Console.WriteLine(Binary(Utility.ReadInt()));
         }
-        public static int Binary(int n)
+        public static string Binary(int n)
         {
             string st = "";
             while(n>0)
@@ -19,7 +19,7 @@ namespace ConsoleApp1
                 st = n % 2 + st;
                 n /= 2;
             }
-             return int.Parse(st);
+            return st;
         }
     }
 }
