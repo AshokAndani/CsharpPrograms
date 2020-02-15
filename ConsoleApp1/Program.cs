@@ -59,6 +59,12 @@ namespace ConsoleApp1
                 case 17:
                     new TicTacToe();
                     break;
+                case 18:
+                    new VendingMachine();
+                        break;
+                case 19:
+                    new DayOfWeek();
+                    break;
                 default:
                     Console.WriteLine("invalid Entry");
                     break;
