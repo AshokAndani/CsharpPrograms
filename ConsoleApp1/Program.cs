@@ -30,6 +30,7 @@ namespace ConsoleApp1
                 case 18:new VendingMachine(); break;
                 case 19: new TemperatureConversion(); break;
                 case 20:new MonthlyPayment(); break;
+                case 21:new Sqrt(); break;
                 default:Console.WriteLine("invalid Entry"); break;
             }
 
