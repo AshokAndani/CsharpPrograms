@@ -10,7 +10,7 @@ namespace ConsoleApp1
             int number = Utility.ReadInt();
             switch (number)
             {
-
+               // in order to invoke the object and process the results codes are written in constructor.
                 case 1:new LeapYear(); break;
                 case 2:new Factorial(); break;
                 case 3:new HarmonicNumber(); break;
@@ -32,6 +32,11 @@ namespace ConsoleApp1
                 case 20:new MonthlyPayment(); break;
                 case 21:new Sqrt(); break;
                 case 22:new ToBinary(); break;
+
+
+// without creating the objects and only using a static driver method in to process the result
+// from here...
+                case 23: Binary.Driver(); break;
                 default:Console.WriteLine("invalid Entry"); break;
             }
 
