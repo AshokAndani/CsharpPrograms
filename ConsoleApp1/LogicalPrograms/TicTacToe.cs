@@ -49,7 +49,11 @@ namespace ConsoleApp1
                 Console.Clear();
                 displayBoard(ch);
                 CheckForWin(ch);
-                CheckForTie(ch);
+                if(CheckForTie(ch))
+                {
+                    new TicTacToe();
+                }
+                
             }
 
 
@@ -86,7 +90,7 @@ namespace ConsoleApp1
                 }
             }
         }
-        public void CheckForTie(char[,] ch)
+        public bool CheckForTie(char[,] ch)
         {
             int inc = 0;
             for (int i = 1; i < ch.GetLength(0); i++)
@@ -102,8 +106,10 @@ namespace ConsoleApp1
             if (inc == 0)
             {
                 Console.WriteLine("its tie play again...");
-                System.Environment.Exit(0);
+                //System.Environment.Exit(0);
+                return true;
             }
+            return false;
         }
         public void CheckForWin(char[,] ch)
         {

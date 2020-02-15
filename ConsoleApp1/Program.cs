@@ -50,9 +50,6 @@ namespace ConsoleApp1
                 case 13:
                     new GamblingSimulator();
                     break;
-                case 14:
-                    new Test();
-                    break;
                 case 15:
                     new CouponNumberGenerator();
                     break;
