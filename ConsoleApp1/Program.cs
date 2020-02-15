@@ -31,6 +31,7 @@ namespace ConsoleApp1
                 case 19: new TemperatureConversion(); break;
                 case 20:new MonthlyPayment(); break;
                 case 21:new Sqrt(); break;
+                case 22:new ToBinary(); break;
                 default:Console.WriteLine("invalid Entry"); break;
             }
 
