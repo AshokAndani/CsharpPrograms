@@ -1,4 +1,5 @@
 ﻿using System;
+using ConsoleApp1.Algorithms;
 
 namespace ConsoleApp1
 {
@@ -10,7 +11,8 @@ namespace ConsoleApp1
             int number = Utility.ReadInt();
             switch (number)
             {
-               // in order to invoke the object and process the results codes are written in constructor.
+                // in order to invoke the object and process the results codes are written in constructor.
+                case 0: new Test(); break;
                 case 1:new LeapYear(); break;
                 case 2:new Factorial(); break;
                 case 3:new HarmonicNumber(); break;
@@ -34,10 +36,15 @@ namespace ConsoleApp1
                 case 22:new ToBinary(); break;
 
 
-// without creating the objects and only using a static driver method in to process the result
-// from here...
-                case 23: Binary.Driver(); break;
+                // without creating the objects and only using a static driver method in to process the result
+                // from here...
+                case 23: new BinarySearchWord().DriverMethod(); break;
+                case 24: Binary.Driver(); break;
+                case 25: AnagramDetection.DriverMethod(); break;
+                case 26: RangeOfPrimeNumbers.DriverMethod(); break;
+                case 27: new StringPermutation().DriverMethod(); break;
                 default:Console.WriteLine("invalid Entry"); break;
+                
             }
 
         }
