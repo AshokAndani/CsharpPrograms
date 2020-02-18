@@ -56,7 +56,46 @@ namespace ConsoleApp1
             {
                 Console.Write(n + " ");
             }
-            
+            Console.WriteLine(); 
+            Console.WriteLine("these are the Prime palindromes and Anagrams");
+            for (int i = 0; i < a.Length; i++)
+            {
+                if (isPalindrome(a[i]) && a[i]>100)
+                {
+                    for(int j=0;j<a.Length;j++)
+                    {
+                        if(CheckAnagram(a[i],a[j]) && a[i]!=a[j])
+                        {
+                            Console.WriteLine(a[i]+" "+a[j]);
+                        }
+                    }
+                }
+            }
         }
+        public static bool isPalindrome(int arr)
+        {
+            int t = arr, ex=0;
+            while(t>0)
+            {
+                ex =ex* 10 +( t % 10);
+                t /= 10;
+            }
+            return ex == arr;
+        }
+        public static bool CheckAnagram(int a,int b)
+        {
+
+            char[] arr=a.ToString().ToCharArray();Array.Sort(arr);
+            char[] arr1= b.ToString().ToCharArray(); Array.Sort(arr1);
+            if (arr.Length != arr1.Length)
+                return false;
+            for(int i=0;i<arr.Length;i++)
+            {
+                if (arr[i] != arr1[i])
+                    return false;
+            }
+            return true;
+        }
+        
     }
 }
