@@ -43,6 +43,7 @@ namespace ConsoleApp1
                 case 25: AnagramDetection.DriverMethod(); break;
                 case 26: RangeOfPrimeNumbers.DriverMethod(); break;
                 case 27: new StringPermutation().DriverMethod(); break;
+                case 28: RegexPatternMessage.DriverMethod(); break;
                 default:Console.WriteLine("invalid Entry"); break;
                 
             }
