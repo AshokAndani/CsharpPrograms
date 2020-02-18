@@ -44,6 +44,8 @@ namespace ConsoleApp1
                 case 26: RangeOfPrimeNumbers.DriverMethod(); break;
                 case 27: new StringPermutation().DriverMethod(); break;
                 case 28: RegexPatternMessage.DriverMethod(); break;
+                case 29: MagicNumberGuess.DriverMethod(); break;
+                case 30: MergeSorting.DriverMethod(); break;
                 default:Console.WriteLine("invalid Entry"); break;
                 
             }
