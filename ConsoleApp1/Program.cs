@@ -42,10 +42,12 @@ namespace ConsoleApp1
                 case 24: Binary.Driver(); break;
                 case 25: AnagramDetection.DriverMethod(); break;
                 case 26: RangeOfPrimeNumbers.DriverMethod(); break;
-                case 27: new StringPermutation().DriverMethod(); break;
+                case 27: StringPermutationRecursion.DriverMethod("ABC"); break;
                 case 28: RegexPatternMessage.DriverMethod(); break;
                 case 29: MagicNumberGuess.DriverMethod(); break;
                 case 30: MergeSorting.DriverMethod(); break;
+                case 31: StringPermutationIterative.DriverPermute("ABC"); break;
+                case 32: ComparePermutations.DriverMethod(); break;
                 default:Console.WriteLine("invalid Entry"); break;
                 
             }
