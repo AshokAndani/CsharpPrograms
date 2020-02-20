@@ -17,7 +17,7 @@ namespace ConsoleApp1.DataStructures.UnOrderedList
             List list=ArrayToList(array);
             Console.Write("enter the word : ");
             string word = Console.ReadLine();
-            Console.WriteLine("Before....Processing....................");
+            Console.WriteLine("Before....Processing_______________________________________________");
             String content = File.ReadAllText(FilePath);
             Console.WriteLine(content);
             if (list.Search(word))
@@ -28,14 +28,14 @@ namespace ConsoleApp1.DataStructures.UnOrderedList
             }
             else
             {
-                Console.WriteLine(word + " is not found so adding the it.... ");
+                Console.WriteLine(word + " is not found so adding it to List___- ");
                 list.Append(word);
             }
-            Console.WriteLine("after Processing.....................");
+            Console.WriteLine("after Processing____________________________________________________");
             Console.WriteLine(list);
             String[] arr = ListToArray(list);
             File.WriteAllText(FilePath,string.Join(" ",arr));
-            Console.WriteLine("This is from final File:....");
+            Console.WriteLine("This is from final File:....___________________________________________");
             Console.WriteLine(File.ReadAllText(FilePath));
         }
         public static List ArrayToList(string[] arr)
