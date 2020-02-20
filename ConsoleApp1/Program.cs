@@ -51,15 +51,15 @@ namespace ConsoleApp1
                 case 30: MergeSorting.DriverMethod(); break;
                 case 31: StringPermutationIterative.DriverPermute("ABC"); break;
                 case 32: ComparePermutations.DriverMethod(); break;
-                case 33: ReadFromFile.DriverMethod(); break;
+
                 //data Structures
-                //case 33:new List();
-                
-                
-                
-                
-                
-                
+                case 33: ReadFromFile.DriverMethod(); break;
+                //case 34:
+
+
+
+
+
                 default:Console.WriteLine("invalid Entry"); break;
                 
             }
