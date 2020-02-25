@@ -2,22 +2,22 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ConsoleApp1.DataStructures.UnOrderedList
+namespace DataStructures.UnOrderedList
 {
-    class List
+    class List<T>
     {
         public class Node
         {
-            public Object data;
+            public T data;
             public Node next;
-            public Node(Object data)
+            public Node(T data)
             {
                 this.data = data;
             }
         }
         public Node head;
         //correct
-        public bool Append(Object data)
+        public bool Append(T data)
         {
             Node n = new Node(data);
             if (head == null)
@@ -35,7 +35,7 @@ namespace ConsoleApp1.DataStructures.UnOrderedList
             return true;
         }
         //correct
-        public Object Pop()
+        public T Pop()
         {
             if (head == null)
             {
@@ -47,14 +47,16 @@ namespace ConsoleApp1.DataStructures.UnOrderedList
                 p = t;
                 t = t.next;
             }
-            Object obj = t.data;
+            T obj = t.data;
             p.next = null;
             return obj;
         }
-        public object peek(int ind)
+        public T peek(int ind)
         {
             if (head == null)
-                return null;
+            {
+                return (T)default;
+            }
             if (ind == 0)
                 return head.data;
             Node t = head;
@@ -65,10 +67,10 @@ namespace ConsoleApp1.DataStructures.UnOrderedList
             }
             if (ind == 0)
                 return t.data;
-            return null;
+            return (T)default;
         }
         //correct
-        public Object peek()
+        public T peek()
         {
             if (head == null)
                 throw new NullReferenceException("empty List");
@@ -78,11 +80,11 @@ namespace ConsoleApp1.DataStructures.UnOrderedList
                 p = t;
                 t = t.next;
             }
-            Object obj = t.data;
+            T obj = t.data;
             return obj;
         }
         //correct
-        public bool Search(Object data)
+        public bool Search(T data)
         {
             if (head == null)
                 throw new NullReferenceException("empty List");
@@ -116,7 +118,7 @@ namespace ConsoleApp1.DataStructures.UnOrderedList
             return count;
         }
         //correct
-        public bool Add(Object data)
+        public bool Add(T data)
         {
             Node n = new Node(data);
             if (head == null)
@@ -129,10 +131,13 @@ namespace ConsoleApp1.DataStructures.UnOrderedList
             return true;
         }
         //correct
-        public override String ToString()
+        public override string ToString()
         {
             if (head == null)
+            {
+                
                 return null;
+            }
             Node t = head;
             string s = "";
             while (t != null)
@@ -143,7 +148,7 @@ namespace ConsoleApp1.DataStructures.UnOrderedList
             return s;
         }
         //correct
-        public int Index(Object data)
+        public int Index(T data)
         {
             int count = -1;
             if (head == null)
@@ -159,7 +164,7 @@ namespace ConsoleApp1.DataStructures.UnOrderedList
             }
             return count;
         }
-        public bool Insert(int ind, Object data)
+        public bool Insert(int ind, T data)
         {
             Node n = new Node(data);
             if (ind == 0)
@@ -184,7 +189,7 @@ namespace ConsoleApp1.DataStructures.UnOrderedList
             throw new NullReferenceException("index is not in range");
         }
         //correct
-        public bool Remove(Object data)
+        public bool Remove(T data)
         {
             if (head == null)
                 throw new NullReferenceException("list is empty");
@@ -203,9 +208,9 @@ namespace ConsoleApp1.DataStructures.UnOrderedList
             }
             return false;
         }
-        public Object Pop(int ind)
+        public T Pop(int ind)
         {
-            Object obj;
+            T obj;
             if (ind == 0)
             {
                 obj = head.data;

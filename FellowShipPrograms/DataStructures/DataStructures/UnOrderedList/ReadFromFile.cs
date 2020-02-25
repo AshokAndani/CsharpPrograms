@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Text;
 using System.IO;
-using ConsoleApp1.DataStructures.UnOrderedList;
+using DataStructures.UnOrderedList;
 
-namespace ConsoleApp1.DataStructures.UnOrderedList
+namespace DataStructures.UnOrderedList
 {
     class ReadFromFile
     {
@@ -14,7 +13,7 @@ namespace ConsoleApp1.DataStructures.UnOrderedList
             Console.WriteLine("enter the file fileName: ");
             string FilePath = Path.GetFullPath(Console.ReadLine());
             String[] array = File.ReadAllText(FilePath).Split(" ");
-            List list=ArrayToList(array);
+            List<String> list=ArrayToList(array);
             Console.Write("enter the word : ");
             string word = Console.ReadLine();
             Console.WriteLine("Before....Processing_______________________________________________");
@@ -38,14 +37,14 @@ namespace ConsoleApp1.DataStructures.UnOrderedList
             Console.WriteLine("This is from final File:....___________________________________________");
             Console.WriteLine(File.ReadAllText(FilePath));
         }
-        public static List ArrayToList(string[] arr)
+        public static List<String> ArrayToList(string[] arr)
         {
-            List list = new List();
+            List<String> list = new List<String>();
             foreach (string content in arr)
                 list.Append(content);
             return list;
         }
-        public static string[] ListToArray(List list)
+        public static string[] ListToArray(List<String> list)
         {
             String[] arr= new string[list.Size()];
             for(int i=0;i<list.Size();i++)
