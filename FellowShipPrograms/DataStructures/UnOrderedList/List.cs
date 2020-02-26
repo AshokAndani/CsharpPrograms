@@ -15,7 +15,7 @@ namespace DataStructures.UnOrderedList
                 this.data = data;
             }
         }
-        public Node head;
+        private Node head;
         //correct
         public bool Append(T data)
         {
@@ -60,7 +60,7 @@ namespace DataStructures.UnOrderedList
             if (ind == 0)
                 return head.data;
             Node t = head;
-            while(ind>0)
+            while(ind>0 && t.next!=null)
             {
                 ind--;
                 t = t.next;
@@ -152,17 +152,17 @@ namespace DataStructures.UnOrderedList
         {
             int count = -1;
             if (head == null)
-                throw new NullReferenceException("Empty List");
+                return -1;
             Node t = head;
             while (t != null)
             {
                 count++;
                 if (t.data.Equals(data))
-                    break;
+                    return count;
                 t = t.next;
 
             }
-            return count;
+            return -1;
         }
         public bool Insert(int ind, T data)
         {
@@ -224,16 +224,27 @@ namespace DataStructures.UnOrderedList
                 pre = t;
                 t = t.next;
             }
-             obj= t.data;
+             
 
             if (ind == 0)
             {
                 pre.next = t.next;
+                obj = t.data;
                 return obj;
             }
             throw new NullReferenceException("index is not range");
             
             
+        }
+        public T[] ToArray()
+        {
+            int size=Size();
+            T[] array = new T[size];
+            for(int i=0;i<size;i++)
+            {
+                array[i] = peek(i);
+            }
+            return array;
         }
     }
 }
