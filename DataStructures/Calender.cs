@@ -6,7 +6,12 @@ namespace DataStructures
 {
     class Calender
     {
-        
+        public bool IsLeapYear(int n)
+        {
+            if ((n % 400 == 0) || ((n % 100 != 0) && (n % 4 == 0)))
+                return true;
+            return false;
+        }
         public void DisplayArray(int[,] a)
         {
             for(int i=0;i<2;i++)
