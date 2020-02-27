@@ -74,3 +74,14 @@ Calender c = new Calender();
             
         }
     }
+ public class Week
+    {
+        public string week;
+        public List<int> list = new List<int>();        
+        public Week(string week)
+        {
+            this.week = week;
+        }
+       
+    }
+}
