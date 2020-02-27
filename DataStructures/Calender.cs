@@ -57,6 +57,17 @@ namespace DataStructures
                 if ((i+d) % 7 == 0) Console.WriteLine();
             }            return res;
         }
+public static void DriverMethod()
+        {
+            Calender c = new Calender();
+            Console.Write("Enter month: ");int month= int.Parse(Console.ReadLine());
+            Console.Write("Enter year: "); int year = int.Parse(Console.ReadLine());
+            Console.WriteLine("___________________________________________");
+            int [,] a=c.calender(month,year);
+            Console.WriteLine("\n_____________________________________________________\n" +
+                "Calender stored in 2D-Array");
+            c.DisplayArray(a);
+        }
         public void DisplayArray(int[,] a)
         {
             for(int i=0;i<2;i++)
