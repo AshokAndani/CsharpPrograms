@@ -36,7 +36,26 @@ namespace DataStructures
                     if(i==0 && j<=6)res[i, j] = j;
                     if (i == 1) res[i, j] = j;
                     
-                }
+                }      }
+            int d = DayOfWeek(1, m, y);
+            char[] week = { 'S', 'M', 'T', 'W', 'T', 'F', 'S' };
+            //Calender Display Starts from here
+            Console.WriteLine(months[m]+" "+y);
+            for(int i=0;i<week.Length;i++)
+            {
+                Console.Write(week[i]+"  ");
+            }
+            Console.WriteLine();
+            for (int i=0;i<d;i++)
+            {
+                Console.Write("{0}  ",' ');
+            }
+
+            for(int i=1;i<=days_in_month[m];i++)
+            {
+                Console.Write("{0,2} ",i);
+                if ((i+d) % 7 == 0) Console.WriteLine();
+            }
         public void DisplayArray(int[,] a)
         {
             for(int i=0;i<2;i++)
