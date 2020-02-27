@@ -39,6 +39,31 @@ namespace DataStructures
             }            
             return res;
         }
+public void DisplayCalender(int m,int y)
+        {
+            String[] months = {"","January","February","March","April","May","June",
+                "July","August","September","October","November","December"};
+            char[] week = { 'S', 'M', 'T', 'W', 'T', 'F', 'S' };
+            int d = DayOfWeek(1, m, y);
+            int[] days_in_month = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+            Console.WriteLine(months[m] + " " + y);
+            //displaying of calender starts here
+            for (int i = 0; i < week.Length; i++)
+            {
+                Console.Write(week[i] + "  ");
+            }
+            Console.WriteLine();
+            for (int i = 0; i < d; i++)
+            {
+                Console.Write("{0}  ", ' ');
+            }
+
+            for (int i = 1; i <= days_in_month[m]; i++)
+            {
+                Console.Write("{0,2} ", i);
+                if ((i + d) % 7 == 0) Console.WriteLine();
+            }
+        }
 public static void DriverMethod()
         {
             Calender c = new Calender();
