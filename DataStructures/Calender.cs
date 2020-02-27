@@ -20,6 +20,23 @@ namespace DataStructures
             int d0 = (d + x + 31 * m0 / 12) % 7;
             return d0;
         }
+  public int[,] calender(int m,int y)
+        {
+            String[] months = {"","January","February","March","April","May","June",
+                "July","August","September","October","November","December"};
+            int[] days_in_month = {0,31,28,31,30,31,30,31,31,30,31,30,31};
+            if (IsLeapYear(y))
+                days_in_month[2] = 29;
+            //filling the array with the dates
+            int[,] res= new int[2,days_in_month[m]+1];
+            for(int i=0;i<2;i++)
+            {
+                for(int j=1;j<res.GetLength(1);j++)
+                {
+                    if(i==0 && j<=6)res[i, j] = j;
+                    if (i == 1) res[i, j] = j;
+                    
+                }
         public void DisplayArray(int[,] a)
         {
             for(int i=0;i<2;i++)
