@@ -70,9 +70,10 @@ public static void DriverMethod()
             Console.Write("Enter month: ");int month= int.Parse(Console.ReadLine());
             Console.Write("Enter year: "); int year = int.Parse(Console.ReadLine());
             Console.WriteLine("___________________________________________");
-            int [,] a=c.calender(month,year);
+            c.DisplayCalender(month, year);
             Console.WriteLine("\n_____________________________________________________\n" +
                 "Calender stored in 2D-Array");
+            int[,] a = c.calender(month, year);
             c.DisplayArray(a);
         }
         public void DisplayArray(int[,] a)
