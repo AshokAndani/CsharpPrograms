@@ -55,7 +55,8 @@ namespace DataStructures
             {
                 Console.Write("{0,2} ",i);
                 if ((i+d) % 7 == 0) Console.WriteLine();
-            }
+            }            return res;
+        }
         public void DisplayArray(int[,] a)
         {
             for(int i=0;i<2;i++)
