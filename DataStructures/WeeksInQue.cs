@@ -32,3 +32,28 @@ namespace DataStructures
             {
                 obj[i] = new Week(week_name[i]);
             }
+Calender c = new Calender();
+            int d=c.DayOfWeek(1,m,y);
+            int LastDate = c.DaysInMonth(m);
+            int week_index = 0;int t = 0;
+            for (int i = 0; i <= LastDate;)
+            {
+                if (i == 1)
+                {
+                    week_index = d;
+                    obj[week_index++].list.Append(i);
+                }
+                else if (i!=1)
+                {
+                    obj[week_index++].list.Append(i);
+                }
+                if ((week_index>6)) week_index = 0;
+                if (t >= d-1) i++;
+                t++;
+
+
+            }
+            foreach (Object o in obj)
+                res.Enqueue(o);
+                return res;
+    }
