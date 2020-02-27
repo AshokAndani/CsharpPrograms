@@ -4,15 +4,17 @@ using System.Text;
 
 namespace DataStructures
 {
-    class Calender
+    public class Calender
     {
+       public static String[] months = {"","January","February","March","April","May","June",
+                "July","August","September","October","November","December"};
         public bool IsLeapYear(int n)
         {
             if ((n % 400 == 0) || ((n % 100 != 0) && (n % 4 == 0)))
                 return true;
             return false;
         }
- public int DayOfWeek(int d,int m,int y)
+        public int DayOfWeek(int d,int m,int y)
         {
             int y0 = y - (14 - m) / 12;
             int x = y0 + y0 / 4 - y0 / 100 + y0 / 400;
@@ -20,7 +22,7 @@ namespace DataStructures
             int d0 = (d + x + 31 * m0 / 12) % 7;
             return d0;
         }
- public int[,] calender(int m,int y)
+        public int[,] calender(int m,int y)
         {
             int[] days_in_month = {0,31,28,31,30,31,30,31,31,30,31,30,31};
             if (IsLeapYear(y))
@@ -39,10 +41,9 @@ namespace DataStructures
             }            
             return res;
         }
-public void DisplayCalender(int m,int y)
+        public void DisplayCalender(int m,int y)
         {
-            String[] months = {"","January","February","March","April","May","June",
-                "July","August","September","October","November","December"};
+            
             char[] week = { 'S', 'M', 'T', 'W', 'T', 'F', 'S' };
             int d = DayOfWeek(1, m, y);
             int[] days_in_month = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
@@ -52,7 +53,7 @@ public void DisplayCalender(int m,int y)
             {
                 Console.Write(week[i] + "  ");
             }
-            Console.WriteLine();
+                Console.WriteLine();
             for (int i = 0; i < d; i++)
             {
                 Console.Write("{0}  ", ' ');
@@ -64,7 +65,12 @@ public void DisplayCalender(int m,int y)
                 if ((i + d) % 7 == 0) Console.WriteLine();
             }
         }
-public static void DriverMethod()
+        public int DaysInMonth(int m)
+        {
+            int[] days_in_month = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+            return days_in_month[m];
+        }
+        public static void DriverMethod()
         {
             Calender c = new Calender();
             Console.Write("Enter month: ");int month= int.Parse(Console.ReadLine());
