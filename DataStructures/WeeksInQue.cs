@@ -57,3 +57,20 @@ Calender c = new Calender();
                 res.Enqueue(o);
                 return res;
     }
+     public void DisplayQueCalender(Queue<Object> obj)
+        {
+            for(int i=0;i<7;i++)
+            {
+                Week O = (Week)obj.Dequeue();
+                int[] a = O.list.ToArray();
+                Console.Write("{0,10}  ",O.week);
+               for(int j=0;j<a.Length;j++)
+                {
+                    if (a[j] == 0) Console.Write("{0,2} ",' ');
+                        else Console.Write("{0,2} ",a[j]);
+                }
+                Console.WriteLine();
+            }
+            
+        }
+    }
