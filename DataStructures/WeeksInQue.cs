@@ -82,6 +82,9 @@ Calender c = new Calender();
         {
             this.week = week;
         }
-       
+        public override string ToString()
+        {
+            return this.week + " " + list;
+        }
     }
 }
