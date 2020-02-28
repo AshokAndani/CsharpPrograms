@@ -20,7 +20,7 @@ namespace DataStructures.Stack
                 {
                     stack.Push(ch);
                 }
-                else
+                else if(ch==')'
                 {
                     if (stack.IsEmpty())
                         return false;
