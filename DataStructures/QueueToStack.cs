@@ -19,5 +19,17 @@ namespace DataStructures
 			
 			
 		}
+public Stack<Object> QueToStack(int m,int y)
+		{
+			
+			WeeksInQue w = new WeeksInQue();
+			Queue<Object> q= w.CalenderToQue(m, y);
+			Stack<Object> st = new Stack<Object>(q.Size());
+			while(q.Size()!=0)
+			{
+				st.Push(q.Dequeue());
+			}
+			return st;
+		}
     }
 }
