@@ -56,7 +56,7 @@ namespace DataStructures.Stack
 			String s = "";
 			for(int i=0;i<capacity;i++)
 			{
-				s = s + obj[i];
+				s = s + obj[i]+" ";
 			}
 			return s;
 		}
