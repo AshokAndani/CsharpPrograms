@@ -25,7 +25,8 @@ namespace DataStructures
                 "Enter 10 for AnagranToStack\n" +
                 "Enter 11 for AnagranToQue\n" +
                 "Enter 12 for Calender\n" +
-                "Enter 13 for CalenderQue");
+                "Enter 13 for CalenderQue\n" +
+                "Enter 14 for QueToStack");
             
             int number = int.Parse(Console.ReadLine());
             //by using a static method called DriverMethod to invoke the particular class
@@ -45,6 +46,7 @@ namespace DataStructures
                 case 11:AnagramToQue.DriverMethod(); break;
                 case 12:Calender.DriverMethod(); break;
                 case 13:WeeksInQue.DriverMethod(); break;
+                case 14:QueueToStack.DriverMethod(); break;
 
                 default: Console.WriteLine("invalid Entry"); ; break;
                 }
