@@ -1,5 +1,5 @@
-﻿
-using System;
+﻿using System;
+using System.Text;
 using DataStructures.Queue;
 using DataStructures.UnOrderedList;
 
@@ -20,7 +20,7 @@ namespace DataStructures
             w.CalenderToQue(month, year);
             w.DisplayQueCalender(w.CalenderToQue(month,year));
         }
- public Queue<Object> CalenderToQue(int m,int y)
+        public Queue<Object> CalenderToQue(int m,int y)
         {
             Queue<Object> res = new Queue<object>(7);
             string[] week_name = { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", 
@@ -31,9 +31,15 @@ namespace DataStructures
             {
                 obj[i] = new Week(week_name[i]);
             }
-Calender c = new Calender();
-            int d=c.DayOfWeek(1,m,y);
-            int LastDate = c.DaysInMonth(m);
+            
+
+            
+            int d=calender.DayOfWeek(1,m,y);
+            int LastDate = calender.DaysInMonth(m);
+            if(calender.IsLeapYear(y))
+            {
+                LastDate = 29;
+            }
             int week_index = 0;int t = 0;
             for (int i = 0; i <= LastDate;)
             {
@@ -56,7 +62,8 @@ Calender c = new Calender();
                 res.Enqueue(o);
                 return res;
     }
-     public void DisplayQueCalender(Queue<Object> obj)
+        
+        public void DisplayQueCalender(Queue<Object> obj)
         {
             for(int i=0;i<7;i++)
             {
@@ -73,7 +80,7 @@ Calender c = new Calender();
             
         }
     }
- public class Week
+    public class Week
     {
         public string week;
         public List<int> list = new List<int>();        
