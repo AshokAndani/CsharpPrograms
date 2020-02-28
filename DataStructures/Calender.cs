@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
 namespace DataStructures
 {
     public class Calender
@@ -44,6 +47,8 @@ namespace DataStructures
             char[] week = { 'S', 'M', 'T', 'W', 'T', 'F', 'S' };
             int d = DayOfWeek(1, m, y);
             int[] days_in_month = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+            if (IsLeapYear(y))
+                days_in_month[2]=29;
             Console.WriteLine(months[m] + " " + y);
             //displaying of calender starts here
             for (int i = 0; i < week.Length; i++)
@@ -74,10 +79,11 @@ namespace DataStructures
             Console.Write("Enter year: "); int year = int.Parse(Console.ReadLine());
             Console.WriteLine("___________________________________________");
             c.DisplayCalender(month, year);
-            Console.WriteLine("\n_____________________________________________________\n" +
+            Console.WriteLine("\n___________________________________________\n" +
                 "Calender stored in 2D-Array");
             int[,] a = c.calender(month, year);
             c.DisplayArray(a);
+            Console.WriteLine("__________________________________________________");
         }
         public void DisplayArray(int[,] a)
         {
