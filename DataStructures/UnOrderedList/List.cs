@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DataStructures.UnOrderedList
 {
-    class List<T>
+   public class List<T>
     {
         public class Node
         {
