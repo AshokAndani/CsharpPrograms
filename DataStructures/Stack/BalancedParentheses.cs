@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
 namespace DataStructures.Stack
 {
     class BalancedParentheses
@@ -20,10 +23,11 @@ namespace DataStructures.Stack
                 {
                     stack.Push(ch);
                 }
-                else
+                else if(ch==')')
                 {
                     if (stack.IsEmpty())
                         return false;
+                   
                     if (ch == ')' && stack.Pop() != '(')
                     {
                         return false;
