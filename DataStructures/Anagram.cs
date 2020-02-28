@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using DataStructures.UnOrderedList;
 
 namespace DataStructures
@@ -56,9 +57,6 @@ namespace DataStructures
         public int[,] Anagrams(List<int> prime,List<int> anagram)
         {
             int[,] arr = new int[2, prime.Size()];
-            Console.WriteLine("number of Prime numbers : "+prime.Size());
-            Console.WriteLine("Number of Anagram numbers : " + anagram.Size());
-
             //filling 1st dimension with anagrams
             for (int i=0;i<anagram.Size();i++)
             {
