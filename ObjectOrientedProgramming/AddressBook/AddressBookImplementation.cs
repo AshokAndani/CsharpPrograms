@@ -22,7 +22,13 @@ namespace AddressBook
         public int zip { get; set; }
         public long PhoneNumber { get; set; }
 
-       
+        public override string ToString()
+        {
+            return string.Format("FirtsName:   {0}\nLastName:    {1}\n" +
+                "PhoneNumber: {2}\nCity:        {3}\nState:       {4}\nZip:         {5}\nAddress:     {6}"
+                , FirstName, LastName,PhoneNumber, City,State,zip,Address);
+        }
+
     }
   
 }
