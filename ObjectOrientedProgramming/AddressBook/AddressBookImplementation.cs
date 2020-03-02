@@ -121,6 +121,15 @@ public void AddPerson()
             Console.Write("choose the detail you want to change..\n lastName(L)\t" +
                 "address(A)\tcity(C)\tstate(S)\tphoneNumber(P)\tzip(Z)\n");
             
+            ////extracting the json contents in the form of string
+            string jsonfile = File.ReadAllText(@"D:\WindowsProjects\ObjectOrientedProgramming\ObjectOrientedProgramming\AddressBook\AddressBook.json");
+
+            ////initializing the List to use it multiples times further
+            List<Person> p;
+
+            ////this will convert the json string to object
+            p = (List<Person>)JsonConvert.DeserializeObject<List<Person>>(jsonfile);
+            
 }
 }
 }
