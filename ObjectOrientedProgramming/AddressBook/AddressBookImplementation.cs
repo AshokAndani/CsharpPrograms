@@ -113,6 +113,14 @@ public void AddPerson()
         public void Edit()
         {
 
+            ////this is to choose the Person From the List
+            Console.WriteLine("Enter the Name of the Person");
+            string firstName = Console.ReadLine();
+           
+            ////this line is to show the user to select attribute represented character
+            Console.Write("choose the detail you want to change..\n lastName(L)\t" +
+                "address(A)\tcity(C)\tstate(S)\tphoneNumber(P)\tzip(Z)\n");
+            
 }
 }
 }
