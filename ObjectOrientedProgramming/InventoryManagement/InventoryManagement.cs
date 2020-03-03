@@ -21,3 +21,30 @@ namespace InventoryManagement
         {
             Console.WriteLine("Welcome to Inventory MAnagement");
             InventoryImplementation imp = new InventoryImplementation();
+
+            while (true)
+            {
+                Console.WriteLine("Enter A to Add\tEnter D to delete an Item");
+
+                char entered = char.Parse(Console.ReadLine());
+
+                switch (entered)
+                {
+                    case 'A': imp.Add();
+                        break;
+                    case 'D': imp.Delete();
+                        break;
+                    default: Console.WriteLine("Enter a valid character");
+                        break;
+                }
+
+                Console.WriteLine("enter yes/No to conitnue");
+                if(Console.ReadLine()!="yes")
+                {
+                    break;
+                }
+            }
+        }
+
+    }
+}
