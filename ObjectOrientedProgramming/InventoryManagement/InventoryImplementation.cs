@@ -115,3 +115,12 @@ namespace InventoryManagement
 
             ////to deserialize the Object to use the Object
             Inventory iv = JsonConvert.DeserializeObject<Inventory>(jfile);
+            Console.WriteLine("Enter 1--> for Rice\tEnter 2--> for Pulses\tEnter 3--> for Wheats\t");
+
+            int entered = int.Parse(Console.ReadLine());
+            Console.WriteLine("Enter the name of the brand");
+            
+            string brand = Console.ReadLine();
+            
+            int sum = iv.Sum;
+            
