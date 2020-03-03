@@ -38,3 +38,5 @@ namespace InventoryManagement
             {
                 sum = iv.Sum;
             }
+////creating a Seeds object to fill it in switch based on requirement
+            Seeds item = new Seeds();
