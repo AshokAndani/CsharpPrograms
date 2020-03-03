@@ -17,3 +17,7 @@ namespace InventoryManagement
     /// </summary>
     public class InventoryManagement
     {
+       public static void DiverMethod()
+        {
+            Console.WriteLine("Welcome to Inventory MAnagement");
+            InventoryImplementation imp = new InventoryImplementation();
