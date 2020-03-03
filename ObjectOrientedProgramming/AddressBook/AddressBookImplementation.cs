@@ -209,6 +209,17 @@ public void AddPerson()
         public string zip;
         public string phoneNumber;
 
+        /// <summary>
+        ///  this method represents the string representation of person object
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return string.Format("FirtsName:   {0}\nlastName:    {1}\n" +
+                "phoneNumber: {2}\ncity:        {3}\nstate:       {4}\nzip:         {5}\naddress:     {6}"
+                , firstName, lastName,phoneNumber, city,state,zip,address);
+        }
+    
 }       
 }
 }
