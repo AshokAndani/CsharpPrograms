@@ -45,3 +45,20 @@ namespace InventoryManagement
             Console.WriteLine("Enter 1--> for Rice\tEnter 2--> for Pulses\tEnter 3--> for Wheats\t");
 
             int entered = int.Parse(Console.ReadLine());
+
+            ////filling the details
+            Console.Write("Enter the name of the Product: ");
+            item.brand = Console.ReadLine();
+            Console.Write("Enter the Price per Kg: ");
+            item.PricePerKg = int.Parse(Console.ReadLine());
+            Console.Write("Enter the Weight: ");
+            item.Weight = int.Parse(Console.ReadLine());
+            item.TotalPrice = item.PricePerKg * item.Weight;
+            if (iv != null)
+            {
+                sum += item.TotalPrice;
+            }
+            else
+            {
+                sum = item.TotalPrice;
+            }
