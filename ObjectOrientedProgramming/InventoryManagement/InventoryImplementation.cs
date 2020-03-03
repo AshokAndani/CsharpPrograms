@@ -103,3 +103,8 @@ namespace InventoryManagement
                 Console.WriteLine("new Product Added to the Inventory");
             }
         }
+        /// <summary>
+        /// this method deletes the brand specified by the user
+        /// </summary>
+        public void Delete()
+        {
