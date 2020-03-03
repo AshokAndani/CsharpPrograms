@@ -181,7 +181,20 @@ public void AddPerson()
         /// </summary>
         public void DisplayJson()
         {
-}       
+}
+            ////fetching the json file to deserialize
+            string jsonfile = File.ReadAllText(@"D:\WindowsProjects\ObjectOrientedProgramming\ObjectOrientedProgramming\AddressBook\AddressBook.json");
+
+            ////deserializing the json state
+            List<Person> p = (List<Person>)JsonConvert.DeserializeObject<List<Person>>(jsonfile);
+
+            ////printing the object contents
+            foreach (Person x in p)
+            {
+                Console.WriteLine(x + "\n");
+            }
+        }
+    }       
 }
 }
 }
