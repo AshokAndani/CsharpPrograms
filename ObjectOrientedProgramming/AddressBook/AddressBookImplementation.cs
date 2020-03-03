@@ -194,7 +194,22 @@ public void AddPerson()
                 Console.WriteLine(x + "\n");
             }
         }
-    }       
+    }
+
+    /// <summary>
+    /// this is the Person Class which will be serialized 
+    /// </summary>
+    public class Person
+    {
+        public string firstName;
+        public string lastName;
+        public string address;
+        public string city;
+        public string state;
+        public string zip;
+        public string phoneNumber;
+
+}       
 }
 }
 }
