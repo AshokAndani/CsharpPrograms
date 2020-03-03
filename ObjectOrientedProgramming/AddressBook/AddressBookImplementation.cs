@@ -136,7 +136,37 @@ public void AddPerson()
                 {
                     char ch = Console.ReadLine()[0];
                     Console.Write("Enter the replacing detail: ");
-                    string replace = Console.ReadLine();       
+                    string replace = Console.ReadLine();                    switch (ch)
+                    {
+                        case 'L':
+                            Console.WriteLine(x.lastName + " is replaced with " + replace); 
+                            x.lastName = replace;
+                            break;
+                        case 'A':
+                            Console.WriteLine(x.address + " is replaced with " + replace);
+                            x.address = replace; 
+                            break;
+                        case 'C':
+                            Console.WriteLine(x.city + " is replaced with " + replace);
+                            x.city = replace; 
+                            break;
+                        case 'S':
+                            Console.WriteLine(x.state + " is replaced with " + replace);
+                            x.state = replace; 
+                            break;
+                        case 'P':
+                            Console.WriteLine(x.phoneNumber + " is replaced with " + replace);
+                            x.phoneNumber = replace; 
+                            break;
+                        case 'Z':
+                            Console.WriteLine(x.zip + " is replaced with " + replace);
+                            x.zip = replace; 
+                            break;
+                        default:
+                            Console.WriteLine("Invalid Entry");
+                            break;
+                    }
+                }       
 }
 }
 }
