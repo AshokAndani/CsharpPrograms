@@ -62,3 +62,34 @@ namespace InventoryManagement
             {
                 sum = item.TotalPrice;
             }
+            ////running a  based on user
+            switch (entered)
+            {
+                case 1: 
+                    if (iv.Rice == null) 
+                    {
+                        iv.Rice = new List<Seeds>(); 
+                    }
+
+                    iv.Rice.Add(item);
+                    break;
+                case 2:
+                    if (iv.Pulses == null) 
+                    { 
+                        iv.Pulses = new List<Seeds>(); 
+                    }
+
+                    iv.Pulses.Add(item);
+                    break;
+                case 3:
+                    if (iv.Wheats == null) 
+                    {
+                        iv.Wheats = new List<Seeds>();
+                    }
+
+                    iv.Wheats.Add(item);
+                    break;
+                default:
+                    Console.WriteLine("Invalid Entry try Again...");
+                    break;
+            }
