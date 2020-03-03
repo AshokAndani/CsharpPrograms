@@ -107,4 +107,11 @@ namespace InventoryManagement
         /// this method deletes the brand specified by the user
         /// </summary>
         public void Delete()
-        {
+        { 
+           Console.WriteLine("Are you sure you Want to delete...items from Inventory: ");
+
+            //// fetching the jsonstring from the file
+            string jfile = File.ReadAllText(@"D:\WindowsProjects\ObjectOrientedProgramming\ObjectOrientedProgramming\InventoryManagement\JSON.json");
+
+            ////to deserialize the Object to use the Object
+            Inventory iv = JsonConvert.DeserializeObject<Inventory>(jfile);
