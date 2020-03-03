@@ -129,7 +129,14 @@ public void AddPerson()
 
             ////this will convert the json string to object
             p = (List<Person>)JsonConvert.DeserializeObject<List<Person>>(jsonfile);
-            
+                 ////iterating the list to check catch the required object
+            foreach (Person x in p)
+            {
+                if (x.firstName.Equals(firstName))
+                {
+                    char ch = Console.ReadLine()[0];
+                    Console.Write("Enter the replacing detail: ");
+                    string replace = Console.ReadLine();       
 }
 }
 }
