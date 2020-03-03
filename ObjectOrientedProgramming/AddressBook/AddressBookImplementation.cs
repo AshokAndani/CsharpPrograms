@@ -166,7 +166,16 @@ public void AddPerson()
                             Console.WriteLine("Invalid Entry");
                             break;
                     }
-                }       
+                }
+            }
+            
+            string serialize = JsonConvert.SerializeObject(p);
+            
+            File.WriteAllText(@"D:\WindowsProjects\ObjectOrientedProgramming\ObjectOrientedProgramming\AddressBook\AddressBook.json", serialize);
+
+            return;
+        }
+       
 }
 }
 }
