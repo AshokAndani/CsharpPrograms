@@ -124,3 +124,47 @@ namespace InventoryManagement
             
             int sum = iv.Sum;
             
+            switch (entered)
+            {
+                case 1:
+                    foreach (Seeds s in iv.Rice)
+                    {
+                        if (s.brand.Equals(brand))
+                        {
+                            sum -= s.TotalPrice;
+                            iv.Rice.Remove(s);
+                            break;
+                        }
+                    }
+
+                    break;
+         
+                case 2:
+                    foreach (Seeds s in iv.Pulses)
+                    {
+                        if (s.brand.Equals(brand))
+                        {
+                            sum -= s.TotalPrice;
+                            iv.Rice.Remove(s);
+                            break;
+                        }
+                    }
+
+                    break;
+                
+                case 3:
+                    foreach (Seeds s in iv.Wheats)
+                    {
+                        if (s.brand.Equals(brand))
+                        {
+                            sum -= s.TotalPrice;
+                            iv.Rice.Remove(s);
+                            break;
+                        }
+                    }
+
+                    break;
+                default:
+                    Console.WriteLine("there is no such brand available in Inventory");
+                    break;
+            }
