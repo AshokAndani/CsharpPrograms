@@ -48,4 +48,14 @@ namespace AddressBook
                     default: Console.WriteLine("Invalid Entry");
                         break;
                 }    
-}
+    ////this line is to stop the while loop
+                Console.WriteLine("Enter yes/no to Continue");
+                if (Console.ReadLine().Equals("no"))
+                {
+                    break;
+                }
+
+                ////clearing the Screen
+                Console.Clear();
+            }
+        }}
