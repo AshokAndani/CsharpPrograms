@@ -4,3 +4,10 @@
 /// </copyright>
 /// <creator name="ASHOKKUMAR"/>
 //// --------------------------------------------------------------------------------------------------------------------
+
+namespace InventoryManagement
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+    using Newtonsoft.Json.Linq;
