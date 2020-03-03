@@ -33,4 +33,19 @@ namespace AddressBook
                     "delete--to delete a Person\n" +
                     "Edit-- to edit Existing person's info");
                 string entered = Console.ReadLine();
-    }
+
+                ////using switch case to jump to required operation
+                switch (entered)
+                {
+                    case "Add": ad.AddPerson();
+                        break;
+                    case "Delete": ad.Delete();
+                        break;
+                    case "Edit": ad.Edit();
+                        break;
+                    case "Display": ad.DisplayJson();
+                        break;
+                    default: Console.WriteLine("Invalid Entry");
+                        break;
+                }    
+}
