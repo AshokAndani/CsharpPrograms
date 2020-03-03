@@ -10,3 +10,14 @@ namespace InventoryManagement
     using System;
     using System.Collections.Generic;
     using System.Text;
+    
+/// <summary>
+    /// this is the class for seeds for every type
+    /// </summary>
+    public class Inventory
+    {
+        public int Sum { get; set; }
+        public List<Seeds> Rice;
+        public List<Seeds> Pulses;
+        public List<Seeds> Wheats;
+    }
