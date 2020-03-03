@@ -21,3 +21,9 @@ namespace InventoryManagement
         public List<Seeds> Pulses;
         public List<Seeds> Wheats;
     }
+    public class Seeds
+    {
+        public string brand;
+        public int PricePerKg;
+        public int Weight;
+        public int TotalPrice;
