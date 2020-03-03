@@ -40,3 +40,8 @@ namespace InventoryManagement
             }
 ////creating a Seeds object to fill it in switch based on requirement
             Seeds item = new Seeds();
+
+            ////asking the user to choose the given option
+            Console.WriteLine("Enter 1--> for Rice\tEnter 2--> for Pulses\tEnter 3--> for Wheats\t");
+
+            int entered = int.Parse(Console.ReadLine());
