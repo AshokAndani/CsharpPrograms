@@ -93,3 +93,13 @@ namespace InventoryManagement
                     Console.WriteLine("Invalid Entry try Again...");
                     break;
             }
+            iv.Sum = sum;
+
+            ////now serializing and writing to file directly 
+            using (StreamWriter writer = File.CreateText(@"D:\WindowsProjects\ObjectOrientedProgramming\ObjectOrientedProgramming\InventoryManagement\JSON.json"))
+            {
+                JsonSerializer serializer = new JsonSerializer();
+                serializer.Serialize(writer, iv);
+                Console.WriteLine("new Product Added to the Inventory");
+            }
+        }
