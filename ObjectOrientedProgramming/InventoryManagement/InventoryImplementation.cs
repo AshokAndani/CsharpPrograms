@@ -11,3 +11,12 @@ namespace InventoryManagement
     using System.IO;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// this class manages the inventory json file
+    /// </summary>
+    public class InventoryImplementation
+    {
+        /// <summary>
+        /// this () will add the items to inventory
+        /// </summary>
