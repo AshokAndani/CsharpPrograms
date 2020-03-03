@@ -15,7 +15,7 @@ namespace AddressBook
     /// this class controls the AddressBookImplementation
     /// </summary>
     class AddressBookManagement
-    {
+    { 
  /// <summary>
  /// this () is responsible to manage all the operation related to AddressBook
 /// </summary>
