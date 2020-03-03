@@ -168,3 +168,14 @@ namespace InventoryManagement
                     Console.WriteLine("there is no such brand available in Inventory");
                     break;
             }
+
+            ////now filling the file with updated inventory
+            using (StreamWriter stream = File.CreateText(@"D:\WindowsProjects\ObjectOrientedProgramming\ObjectOrientedProgramming\InventoryManagement\JSON.json"))
+            {
+                JsonSerializer serializer = new JsonSerializer();
+                serializer.Serialize(stream, iv);
+            }
+        }
+    }
+}
+
