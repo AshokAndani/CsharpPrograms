@@ -21,4 +21,16 @@ namespace AddressBook
 /// </summary>
         public static void DriverMethod()
         {
+            ////creating the AddressBookImplementation object
+            AddressBookImplementation ad = new AddressBookImplementation();
+
+            while (true)
+            {
+                ////this is to provide information to user about name of the OPerations
+                Console.WriteLine("Enter the String given below to Perform respective Operations" +
+                    "\nDisplay--to display all the Persons info from List\n" +
+                    "Add--to add a new Person\n" +
+                    "delete--to delete a Person\n" +
+                    "Edit-- to edit Existing person's info");
+                string entered = Console.ReadLine();
     }
