@@ -175,7 +175,13 @@ public void AddPerson()
 
             return;
         }
-       
+
+        /// <summary>
+        /// this method display the json file content
+        /// </summary>
+        public void DisplayJson()
+        {
+}       
 }
 }
 }
