@@ -27,3 +27,13 @@ namespace InventoryManagement
         public int PricePerKg;
         public int Weight;
         public int TotalPrice;
+        /// <summary>
+        /// this method is to represent the object into String format
+        /// </summary>
+        public override string ToString()
+        {
+            return string.Format("name:\t{0}\nPrice per KG:\t{1}\nWeight:\t{2}\nTotalPrice:\t{3}", this.brand, this.PricePerKg, this.Weight, this.TotalPrice);
+        }
+    }
+    
+}
