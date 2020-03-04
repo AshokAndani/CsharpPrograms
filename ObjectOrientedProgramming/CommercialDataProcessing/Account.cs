@@ -37,3 +37,7 @@ namespace CommercialDataProcessing
         /// <param name="Name"></param>
         public void Fill(string Name)
         {
+
+            ////taking the inputs from the user
+            Console.WriteLine("Enter the Cash balance");
+            this.Cash = double.Parse(Console.ReadLine());
