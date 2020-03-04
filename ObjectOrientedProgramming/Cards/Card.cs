@@ -14,3 +14,4 @@ namespace ObjectOrientedProgramming.Cards
     /// </summary>
     public class Card
     {
+                private string suit, value;
