@@ -76,3 +76,8 @@ namespace CommercialDataProcessing
 
             return grandTotal;
         }
+        /// <summary>
+        /// prints all the details of the Account
+        /// </summary>
+        public void PrintReport()
+        {
