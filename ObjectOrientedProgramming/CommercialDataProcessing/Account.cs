@@ -11,3 +11,9 @@ namespace CommercialDataProcessing
     using System.IO;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// class as an account data type
+    /// </summary>
+    public class StockAccount
+    {
