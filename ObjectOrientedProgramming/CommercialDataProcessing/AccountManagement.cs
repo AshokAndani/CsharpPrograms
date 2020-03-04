@@ -27,3 +27,17 @@ namespace CommercialDataProcessing
                 "Enter 1 to dispaly account report\n" +
                 "Enter 2 to remove an account\n" +
                 "Enter 3 to Add a New account");
+     switch (int.Parse(Console.ReadLine()))
+            {
+                case 1: Console.WriteLine("Enter Name: ");
+                    ac.AcReport(Console.ReadLine());
+                    break;
+                case 2: Console.WriteLine("Enter Name: ");
+                    ac.Remove(Console.ReadLine());
+                    break;
+                case 3: ac.Add();
+                    break;
+                default: Console.WriteLine("Invalid Entry");
+                    break;
+            }
+        }
