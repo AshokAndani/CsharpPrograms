@@ -27,3 +27,12 @@ namespace Stocks
             return String.Format("Name: {0}\nPrice: {1}\nNumber of Shares: {2}", name, SharePrice, NumberOfShares);
         }
     }
+ /// <summary>
+    /// this class contains the list of stocks and total stock price
+    /// </summary>
+    public class StockPortfolio
+    {
+        public int grandTotal { get; set; }
+       public List<Stock> StockList;
+    }
+}
