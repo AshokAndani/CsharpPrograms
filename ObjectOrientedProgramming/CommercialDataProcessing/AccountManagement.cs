@@ -80,3 +80,16 @@ ls.Add(ac);
         /// <param name="name">user enters the name</param>
         public void Remove(string name)
         {
+    //// fetching string from json
+            string jfile = File.ReadAllText(path);
+
+            //// initializing the Object
+            List<StockAccount> ls;
+            if (jfile.Length < 1)
+            {
+                ls = new List<StockAccount>();
+            }
+            else
+            {
+                ls = JsonConvert.DeserializeObject<List<StockAccount>>(jfile);
+            }
