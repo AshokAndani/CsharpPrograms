@@ -18,3 +18,12 @@ namespace Stocks
         public int NumberOfShares { get; set; }
         public int SharePrice { get; set; }
         public int StockPrice { get; set; }
+/// <summary>
+        /// string representation of Stock class
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return String.Format("Name: {0}\nPrice: {1}\nNumber of Shares: {2}", name, SharePrice, NumberOfShares);
+        }
+    }
