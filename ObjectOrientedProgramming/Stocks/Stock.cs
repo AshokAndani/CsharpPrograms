@@ -14,3 +14,7 @@ namespace Stocks
     /// </summary>
     public class Stock
     {
+     public String name { get; set; }
+        public int NumberOfShares { get; set; }
+        public int SharePrice { get; set; }
+        public int StockPrice { get; set; }
