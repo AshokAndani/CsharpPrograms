@@ -60,3 +60,8 @@ namespace CommercialDataProcessing
 Console.WriteLine("enter the Name: ");
             StockAccount ac = new StockAccount();
             ac.Fill(Console.ReadLine());
+ls.Add(ac);
+
+            string serial = JsonConvert.SerializeObject(ls);
+            File.WriteAllText(path, serial);
+            Console.WriteLine("done");
