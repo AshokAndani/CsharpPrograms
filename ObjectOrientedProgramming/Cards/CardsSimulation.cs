@@ -24,3 +24,9 @@ namespace ObjectOrientedProgramming.Cards
             deckOfCards.Shuffle();
 
             Player[] players = new Player[4];
+//// initializing the List and player objects to fill them further
+            for (int i = 0; i < 4; i++)
+            {
+                players[i] = new Player();
+                players[i].cards = new List<Card>();
+            }
