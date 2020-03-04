@@ -17,3 +17,8 @@ namespace Stocks
     public class StockImplementation
     {
 public static string path = @"D:\WindowsProjects\ObjectOrientedProgramming\ObjectOrientedProgramming\Stocks\Stocks.json";
+/// <summary>
+        /// this method adds the new stock entry
+        /// </summary>
+        public void AddStock()
+        {
