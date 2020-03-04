@@ -57,3 +57,6 @@ namespace CommercialDataProcessing
             {
                 ls = JsonConvert.DeserializeObject<List<StockAccount>>(jfile);
             }
+Console.WriteLine("enter the Name: ");
+            StockAccount ac = new StockAccount();
+            ac.Fill(Console.ReadLine());
