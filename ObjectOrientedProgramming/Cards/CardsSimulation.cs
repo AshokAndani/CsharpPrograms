@@ -37,3 +37,9 @@ for (int i = 0; i < 4; i++)
                     players[i].cards.Add(deckOfCards.TakeCard());
                 }
             }
+for (int i = 0; i < 4; i++)
+            {
+                System.Console.WriteLine(players[i]);
+            }
+        }
+    }
