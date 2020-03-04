@@ -82,3 +82,5 @@ public static string path = @"D:\WindowsProjects\ObjectOrientedProgramming\Objec
             {
                 st = JsonConvert.DeserializeObject<StockPortfolio>(jfile);
             }
+Console.WriteLine("Enter 1 to Display Total Share value\t Enter 2 to display total sharePrice of particular stock");
+            int entered = int.Parse(Console.ReadLine());
