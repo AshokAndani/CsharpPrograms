@@ -84,3 +84,27 @@ public static string path = @"D:\WindowsProjects\ObjectOrientedProgramming\Objec
             }
 Console.WriteLine("Enter 1 to Display Total Share value\t Enter 2 to display total sharePrice of particular stock");
             int entered = int.Parse(Console.ReadLine());
+switch (entered)
+            {
+                case 1: Console.WriteLine("total price of all stocks are: "+ st.grandTotal);
+                    break;
+                case 2:
+                    Console.Write("Enter the name: ");
+                    string name = Console.ReadLine();
+                    foreach(Stock s in st.StockList)
+                    {
+                        if(s.name.Equals(name))
+                        {
+                            Console.WriteLine("the Total Stock value of "+name+" is : "+s.StockPrice);
+                        }
+                    }
+                    break;
+                default: Console.WriteLine("Invalid Entry");
+                    break;
+            }
+           
+
+
+        }
+    }
+}
