@@ -65,3 +65,12 @@ ls.Add(ac);
             string serial = JsonConvert.SerializeObject(ls);
             File.WriteAllText(path, serial);
             Console.WriteLine("done");
+////directly writing into file
+            using (StreamWriter stream = File.CreateText(path))
+            {
+                JsonSerializer serializer = new JsonSerializer();
+                serializer.Serialize(stream, ls);
+            }
+
+            Console.WriteLine("Successfully added");
+        }
