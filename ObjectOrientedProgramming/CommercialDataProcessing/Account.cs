@@ -51,3 +51,28 @@ namespace CommercialDataProcessing
             this.Shares = new List<int>();
             this.Stocks = new List<string>();
             this.StockPrice = new List<int>();
+            ////loop to fetch the array details
+            for (int i = 0; i < this.N; i++)
+            {
+                Console.Write("enter the Name of Stock: ");
+                this.Stocks.Add(Console.ReadLine());
+                Console.Write("Enter the number of Shares: ");
+                this.Shares.Add(int.Parse(Console.ReadLine()));
+                Console.Write("Enter the Price/share: ");
+                this.StockPrice.Add(this.Shares[i] * int.Parse(Console.ReadLine()));
+            }
+        }
+        /// <summary>
+        /// it returns sum of all the stocks and shares sum price
+        /// </summary>
+        /// <returns>the total stock amounts</returns>
+        public double ValueOf()
+        {            double grandTotal = 0;
+
+            for (int i = 0; i < this.N; i++)
+            {
+                grandTotal += this.StockPrice[i];
+            }
+
+            return grandTotal;
+        }
