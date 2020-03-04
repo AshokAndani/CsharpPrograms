@@ -51,3 +51,13 @@ namespace ObjectOrientedProgramming.Cards
         /// </summary>
         public void Shuffle()
         {
+this.currentCard = 0;
+            for (int i = 0; i < this.deck.Length; i++)
+            {
+                int sec = this.randomNumber.Next(this.numberOfCards);
+
+                Card temp = this.deck[i];
+                this.deck[i] = this.deck[sec];
+                this.deck[sec] = temp;
+            }
+        }
