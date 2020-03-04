@@ -66,3 +66,19 @@ public static string path = @"D:\WindowsProjects\ObjectOrientedProgramming\Objec
         /// </summary>
         public void ValueOfStacks()
         {
+ ////fetching json
+            string jfile = File.ReadAllText(path);
+
+            ////initializing
+            StockPortfolio st;
+
+            ////validating json string
+            if (jfile.Length < 1)
+            {
+                Console.WriteLine("there are no stocks");
+                return;
+            }
+            else
+            {
+                st = JsonConvert.DeserializeObject<StockPortfolio>(jfile);
+            }
