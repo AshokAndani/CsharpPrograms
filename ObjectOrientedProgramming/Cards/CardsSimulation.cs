@@ -8,3 +8,8 @@ namespace ObjectOrientedProgramming.Cards
 {
     using System.Text;
     using DataStructures.UnOrderedList;
+/// <summary>
+    /// to distribute cards to players
+    /// </summary>
+    public class CardsSimulation
+    {
