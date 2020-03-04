@@ -10,3 +10,8 @@ namespace ObjectOrientedProgramming.PlayerQue
     using System.Text;
     using ObjectOrientedProgramming.Cards;
     using DataStructures.Queue;
+/// <summary>
+    /// to fill the que of players
+    /// </summary>
+    public class PlayersToQue
+    {
