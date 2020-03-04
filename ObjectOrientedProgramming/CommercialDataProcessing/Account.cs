@@ -17,3 +17,17 @@ namespace CommercialDataProcessing
     /// </summary>
     public class StockAccount
     {
+        ////variable to hold the data about account 
+        public double Cash { get; set; }
+
+        public string Name { get; set; }
+        
+        public int N { get; set; }
+        
+        public List<int> Shares { get; set; }
+        
+        public List<string> Stocks { get; set; }
+        
+        public List<int> StockPrice { get; set; }
+        
+        public DateTime Timing = DateTime.Now;
