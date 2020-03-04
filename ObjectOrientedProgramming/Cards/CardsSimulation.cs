@@ -18,3 +18,5 @@ namespace ObjectOrientedProgramming.Cards
         /// </summary>
         public static void DriverMethod()
         {
+////this will create a deck of cards
+            DeckOfCards deckOfCards = new DeckOfCards();
