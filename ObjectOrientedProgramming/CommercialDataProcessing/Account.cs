@@ -41,3 +41,13 @@ namespace CommercialDataProcessing
             ////taking the inputs from the user
             Console.WriteLine("Enter the Cash balance");
             this.Cash = double.Parse(Console.ReadLine());
+           ////initialized the Name
+            this.Name = Name;
+
+            Console.WriteLine("Enter the number of Stocks purchased");
+            this.N = int.Parse(Console.ReadLine());
+            
+            ////initializing the values
+            this.Shares = new List<int>();
+            this.Stocks = new List<string>();
+            this.StockPrice = new List<int>();
