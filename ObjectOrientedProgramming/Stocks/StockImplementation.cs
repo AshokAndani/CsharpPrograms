@@ -41,3 +41,13 @@ public static string path = @"D:\WindowsProjects\ObjectOrientedProgramming\Objec
             }
 ////creating a stock
             Stock s = new Stock();
+////taking the user input to fill the stock 
+            Console.Write("Enter the new Stock Name:");
+            s.name = Console.ReadLine();
+            Console.Write("Enter the share Price For stock: ");
+            s.SharePrice = int.Parse(Console.ReadLine());
+            Console.Write("Enter the Number Of Shares: ");
+            s.NumberOfShares = int.Parse(Console.ReadLine());
+            s.StockPrice = s.SharePrice * s.NumberOfShares;
+            st.grandTotal += s.StockPrice;
+            st.StockList.Add(s);
