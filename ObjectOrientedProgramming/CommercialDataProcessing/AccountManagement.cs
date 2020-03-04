@@ -21,3 +21,9 @@ namespace CommercialDataProcessing
         /// </summary>
         public static void DriverMethod()
         {
+     ////creating own class to use its Methods
+            AccountManagement ac = new AccountManagement();
+            Console.WriteLine("Welcome to Stock Accounts" +
+                "Enter 1 to dispaly account report\n" +
+                "Enter 2 to remove an account\n" +
+                "Enter 3 to Add a New account");
