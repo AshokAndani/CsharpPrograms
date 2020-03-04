@@ -66,4 +66,14 @@ this.currentCard = 0;
         /// </summary>
         /// <returns>returns the card</returns>
         public Card TakeCard()
-        {
+        {if (this.currentCard < this.deck.Length)
+            {
+                return this.deck[this.currentCard++];
+            }
+            else
+            {
+                return null;
+            }
+        }
+    }
+}
