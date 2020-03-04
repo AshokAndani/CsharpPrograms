@@ -18,3 +18,9 @@ namespace ObjectOrientedProgramming.Cards
         private int currentCard;
         readonly private int numberOfCards = 52;
         private Random randomNumber;
+/// <summary>
+        /// <see cref="DeckOfCards"/> 
+        /// do create a deck of cards 
+        /// </summary>
+        public DeckOfCards()
+        {
