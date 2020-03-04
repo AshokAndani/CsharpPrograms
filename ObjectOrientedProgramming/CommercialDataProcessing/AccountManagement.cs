@@ -46,3 +46,14 @@ namespace CommercialDataProcessing
         /// </summary>
         public void Add()
         {
+            string jfile = File.ReadAllText(path);
+
+            List<StockAccount> ls;
+            if (jfile.Length < 1)
+            {
+                ls = new List<StockAccount>();
+            }
+            else
+            {
+                ls = JsonConvert.DeserializeObject<List<StockAccount>>(jfile);
+            }
