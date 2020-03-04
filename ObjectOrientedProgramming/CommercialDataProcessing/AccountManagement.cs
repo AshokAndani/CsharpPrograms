@@ -93,3 +93,12 @@ ls.Add(ac);
             {
                 ls = JsonConvert.DeserializeObject<List<StockAccount>>(jfile);
             }
+//// iterating through List of Objects
+            for (int i = 0; i < ls.Count; i++)
+            {
+                if (ls[i].Name.Equals(name))
+                {
+                    ls.Remove(ls[i]);
+                    break;
+                }
+            }
