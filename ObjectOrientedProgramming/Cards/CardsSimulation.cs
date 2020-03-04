@@ -49,3 +49,13 @@ for (int i = 0; i < 4; i++)
     public class Player
     {
 public List<Card> cards;
+/// <summary>
+        /// this is to represent the player object in string format
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return cards.ToString();
+        }
+    }
+}
