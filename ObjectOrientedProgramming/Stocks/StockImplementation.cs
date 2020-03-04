@@ -39,3 +39,5 @@ public static string path = @"D:\WindowsProjects\ObjectOrientedProgramming\Objec
             {
                 st = JsonConvert.DeserializeObject<StockPortfolio>(jfile);
             }
+////creating a stock
+            Stock s = new Stock();
