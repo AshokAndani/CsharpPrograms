@@ -51,3 +51,12 @@ public static string path = @"D:\WindowsProjects\ObjectOrientedProgramming\Objec
             s.StockPrice = s.SharePrice * s.NumberOfShares;
             st.grandTotal += s.StockPrice;
             st.StockList.Add(s);
+////writing into the file directly
+            using (StreamWriter stream = File.CreateText(path))
+            {
+                JsonSerializer serializer = new JsonSerializer();
+                serializer.Serialize(stream, st);
+            }
+
+                Console.WriteLine("Added Successfully");
+        }
