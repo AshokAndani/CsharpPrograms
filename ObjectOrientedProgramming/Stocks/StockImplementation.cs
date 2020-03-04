@@ -11,3 +11,8 @@ namespace Stocks
     using System.IO;
     using System.Text;
     using Newtonsoft.Json;
+/// <summary>
+    /// this class contains the operation respective to Stock Object
+    /// </summary>
+    public class StockImplementation
+    {
