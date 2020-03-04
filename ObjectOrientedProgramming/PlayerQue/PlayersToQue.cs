@@ -41,3 +41,16 @@ DeckOfCards deckOfCards = new DeckOfCards();
                 
                 players.Enqueue(p);
             }
+//// for printing the players with the cards are
+            ////hence again iterating through all players print the cards players having
+            for (int i = 1; i <= 4; i++)
+            {
+                Console.WriteLine("player----------------- " + i);
+                Player p = players.Dequeue();
+                for (int j = 1; j <= 9; j++)
+                {
+                    Console.Write(p.cards.Dequeue() + " \n");
+                }
+            }
+        }
+    }
