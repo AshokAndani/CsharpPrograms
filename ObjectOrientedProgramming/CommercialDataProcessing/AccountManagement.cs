@@ -41,3 +41,8 @@ namespace CommercialDataProcessing
                     break;
             }
         }
+        /// <summary>
+        /// to add new Accounts
+        /// </summary>
+        public void Add()
+        {
