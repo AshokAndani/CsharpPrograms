@@ -23,3 +23,5 @@ namespace ObjectOrientedProgramming.PlayerQue
 DeckOfCards deckOfCards = new DeckOfCards();
 
             deckOfCards.Shuffle();
+//// the number of players given are 4 hence Queue size is 4
+            Queue<Player> players = new Queue<Player>(4);
