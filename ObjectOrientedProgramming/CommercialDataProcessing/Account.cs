@@ -30,4 +30,10 @@ namespace CommercialDataProcessing
         
         public List<int> StockPrice { get; set; }
         
-        public DateTime Timing = DateTime.Now;
+        public DateTime Timing = DateTime.Now;     
+	/// <summary>
+        /// constructor to initialize the customer Name
+        /// </summary>
+        /// <param name="Name"></param>
+        public void Fill(string Name)
+        {
