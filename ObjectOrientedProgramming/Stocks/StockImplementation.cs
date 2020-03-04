@@ -22,3 +22,20 @@ public static string path = @"D:\WindowsProjects\ObjectOrientedProgramming\Objec
         /// </summary>
         public void AddStock()
         {
+////Fetching the json file
+            string jfile = File.ReadAllText(path);
+
+            ////initializing the Object
+            StockPortfolio st;
+
+            ////validating the json file not to be empty
+            if (jfile.Length < 1)
+            {
+                st = new StockPortfolio();
+                st.StockList = new List<Stock>();
+                st.grandTotal = 0;
+            }
+            else
+            {
+                st = JsonConvert.DeserializeObject<StockPortfolio>(jfile);
+            }
