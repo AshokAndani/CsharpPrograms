@@ -128,3 +128,15 @@ string jfile = File.ReadAllText(path);
             {
                 ls = JsonConvert.DeserializeObject<List<StockAccount>>(jfile);
             }
+//// iterating the List of Account objects
+            for (int i = 0; i < ls.Count; i++)
+            {
+                if (ls[i].Name.Equals(name))
+                {
+                    ls[i].PrintReport();
+                    break;
+                }
+            }
+        }
+    }
+}
