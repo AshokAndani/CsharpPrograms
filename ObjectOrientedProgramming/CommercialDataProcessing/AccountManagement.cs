@@ -16,3 +16,8 @@ namespace CommercialDataProcessing
     public class AccountManagement
     {
        private static string  path = @"D:\WindowsProjects\ObjectOrientedProgramming\ObjectOrientedProgramming\CommercialDataProcessing\Accounts.json";
+ /// <summary>
+        /// this method is used to run the Account Management program
+        /// </summary>
+        public static void DriverMethod()
+        {
