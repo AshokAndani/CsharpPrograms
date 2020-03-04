@@ -111,3 +111,9 @@ ls.Add(ac);
 
             Console.WriteLine("removed successfully");
         }
+/// <summary>
+        /// this method is to display the details of respective account name
+        /// </summary>
+        /// <param name="name">this will get</param>
+        public void AcReport(string name)
+        {
