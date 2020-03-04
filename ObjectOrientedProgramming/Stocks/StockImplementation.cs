@@ -60,3 +60,9 @@ public static string path = @"D:\WindowsProjects\ObjectOrientedProgramming\Objec
 
                 Console.WriteLine("Added Successfully");
         }
+
+/// <summary>
+        /// to display the stock valuees as output 
+        /// </summary>
+        public void ValueOfStacks()
+        {
