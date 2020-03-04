@@ -1,0 +1,17 @@
+{
+  "StockList": [
+    {
+      "name": "aa",
+      "NumberOfShares": 30,
+      "SharePrice": 25000,
+      "StockPrice": 750000
+    },
+    {
+      "name": "bb",
+      "NumberOfShares": 20,
+      "SharePrice": 15000,
+      "StockPrice": 300000
+    }
+  ],
+  "grandTotal": 1050000
+}
