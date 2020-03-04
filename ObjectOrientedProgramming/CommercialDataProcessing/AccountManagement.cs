@@ -74,3 +74,9 @@ ls.Add(ac);
 
             Console.WriteLine("Successfully added");
         }
+/// <summary>
+        /// to remove existing accounts
+        /// </summary>
+        /// <param name="name">user enters the name</param>
+        public void Remove(string name)
+        {
