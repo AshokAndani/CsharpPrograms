@@ -102,3 +102,12 @@ ls.Add(ac);
                     break;
                 }
             }
+//// directly writing into json file
+            using (StreamWriter stream = File.CreateText(path))
+            {
+                JsonSerializer serializer = new JsonSerializer();
+                serializer.Serialize(stream, ls);
+            }
+
+            Console.WriteLine("removed successfully");
+        }
