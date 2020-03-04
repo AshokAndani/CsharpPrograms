@@ -15,3 +15,11 @@ namespace Stocks
 ///summary
  public class StockManagement
     {
+     public static void DriverMethod()
+        {
+            Console.WriteLine("Welcome to Stack Management \n" +
+                "Enter 1 to Add new Stock");
+            int entered = int.Parse(Console.ReadLine());
+            
+            ////created the StockImplementation class
+            StockImplementation im = new StockImplementation();
