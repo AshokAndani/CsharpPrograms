@@ -61,3 +61,9 @@ this.currentCard = 0;
                 this.deck[sec] = temp;
             }
         }
+/// <summary>
+        /// this method is used to take a card from the deck
+        /// </summary>
+        /// <returns>returns the card</returns>
+        public Card TakeCard()
+        {
