@@ -14,3 +14,7 @@ namespace ObjectOrientedProgramming.Cards
     /// </summary>
     public class DeckOfCards
     {
+ private Card[] deck;
+        private int currentCard;
+        readonly private int numberOfCards = 52;
+        private Random randomNumber;
