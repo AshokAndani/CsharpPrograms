@@ -46,3 +46,8 @@ namespace ObjectOrientedProgramming.Cards
                 this.deck[i] = new Card(face[i % 13], suits[i % 3]);
             }
         }
+/// <summary>
+        /// to shuffle the cards in the deck by swapping
+        /// </summary>
+        public void Shuffle()
+        {
