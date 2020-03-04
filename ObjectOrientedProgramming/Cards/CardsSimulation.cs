@@ -30,3 +30,10 @@ namespace ObjectOrientedProgramming.Cards
                 players[i] = new Player();
                 players[i].cards = new List<Card>();
             }
+for (int i = 0; i < 4; i++)
+            {
+                for (int j = 1; j < 10; j++)
+                {
+                    players[i].cards.Add(deckOfCards.TakeCard());
+                }
+            }
