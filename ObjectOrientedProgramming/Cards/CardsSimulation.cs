@@ -48,3 +48,4 @@ for (int i = 0; i < 4; i++)
     /// </summary>
     public class Player
     {
+public List<Card> cards;
