@@ -25,3 +25,13 @@ namespace ObjectOrientedProgramming.Cards
             this.suit = tsuit;
             this.value = tvalue;
         }
+/// <summary>
+        /// to represent card object as string
+        /// </summary>
+        /// <returns>string of card</returns>
+        public override string ToString()
+        {
+            return this.value + " of " + this.suit;
+        }
+    }
+}
