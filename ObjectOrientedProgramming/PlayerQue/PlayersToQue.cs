@@ -54,3 +54,13 @@ DeckOfCards deckOfCards = new DeckOfCards();
             }
         }
     }
+public class Player
+    {
+        public Queue<Card> cards;
+
+        public override string ToString()
+        {
+            return cards.ToString();
+        }
+    }
+}
