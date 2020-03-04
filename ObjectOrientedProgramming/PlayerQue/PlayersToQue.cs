@@ -20,3 +20,6 @@ namespace ObjectOrientedProgramming.PlayerQue
         /// </summary>
         public static void DriverMethod()
         {
+DeckOfCards deckOfCards = new DeckOfCards();
+
+            deckOfCards.Shuffle();
