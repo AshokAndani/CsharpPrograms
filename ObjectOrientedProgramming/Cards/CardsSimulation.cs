@@ -43,3 +43,8 @@ for (int i = 0; i < 4; i++)
             }
         }
     }
+    /// <summary>
+    /// this player object will store the number of cards distributed to him
+    /// </summary>
+    public class Player
+    {
