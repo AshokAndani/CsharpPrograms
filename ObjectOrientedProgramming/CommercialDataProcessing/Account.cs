@@ -80,4 +80,15 @@ namespace CommercialDataProcessing
         /// prints all the details of the Account
         /// </summary>
         public void PrintReport()
-        {
+        {Console.WriteLine("Customer Name: " + this.Name);
+            Console.WriteLine("available Cash is acc is: " + this.Cash);
+            Console.WriteLine("Timing : " + this.Timing);
+            for (int i = 0; i < this.N; i++)
+            {
+                Console.WriteLine("stock symbol:" + this.Stocks[i]);
+                Console.WriteLine("number of shares: " + this.Shares[i]);
+                Console.WriteLine("total Price of stock is: " + this.StockPrice[i]);
+            }
+        }
+    }
+}
