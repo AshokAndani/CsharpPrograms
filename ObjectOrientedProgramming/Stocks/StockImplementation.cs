@@ -16,3 +16,4 @@ namespace Stocks
     /// </summary>
     public class StockImplementation
     {
+public static string path = @"D:\WindowsProjects\ObjectOrientedProgramming\ObjectOrientedProgramming\Stocks\Stocks.json";
