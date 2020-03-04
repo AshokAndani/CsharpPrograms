@@ -15,3 +15,8 @@ namespace ObjectOrientedProgramming.PlayerQue
     /// </summary>
     public class PlayersToQue
     {
+/// <summary>
+        /// this mehod puts players into que and prints
+        /// </summary>
+        public static void DriverMethod()
+        {
