@@ -10,3 +10,8 @@ namespace CommercialDataProcessing
     using System.Collections.Generic;
     using System.IO;
     using Newtonsoft.Json;
+    /// <summary>
+    /// this class manages the StockAccounts class
+    /// </summary>
+    public class AccountManagement
+    {
