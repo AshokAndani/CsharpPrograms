@@ -13,3 +13,8 @@ namespace ObjectOrientedProgramming.Cards
     /// </summary>
     public class CardsSimulation
     {
+/// <summary>
+        ///  method to invoke DeckOfCards class
+        /// </summary>
+        public static void DriverMethod()
+        {
