@@ -20,3 +20,7 @@ namespace ObjectOrientedProgramming.Cards
         {
 ////this will create a deck of cards
             DeckOfCards deckOfCards = new DeckOfCards();
+//// this will shuffle the deck of cards
+            deckOfCards.Shuffle();
+
+            Player[] players = new Player[4];
