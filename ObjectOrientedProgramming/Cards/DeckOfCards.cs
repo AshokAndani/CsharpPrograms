@@ -9,3 +9,8 @@ namespace ObjectOrientedProgramming.Cards
     using System;
     using System.Collections.Generic;
     using System.Text;
+/// <summary>
+    /// this is to create a deck full of cards
+    /// </summary>
+    public class DeckOfCards
+    {
