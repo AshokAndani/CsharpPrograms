@@ -117,3 +117,14 @@ ls.Add(ac);
         /// <param name="name">this will get</param>
         public void AcReport(string name)
         {
+string jfile = File.ReadAllText(path);
+
+            List<StockAccount> ls;
+            if (jfile.Length < 1)
+            {
+                ls = new List<StockAccount>();
+            }
+            else
+            {
+                ls = JsonConvert.DeserializeObject<List<StockAccount>>(jfile);
+            }
