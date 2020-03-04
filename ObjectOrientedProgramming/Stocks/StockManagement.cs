@@ -10,3 +10,8 @@ namespace Stocks
     using System.Collections.Generic;
     using System.IO;
     using System.Text;
+///summary
+/// this method simulates the stock
+///summary
+ public class StockManagement
+    {
