@@ -25,3 +25,19 @@ DeckOfCards deckOfCards = new DeckOfCards();
             deckOfCards.Shuffle();
 //// the number of players given are 4 hence Queue size is 4
             Queue<Player> players = new Queue<Player>(4);
+//// iterating through 4 players
+            for(int i = 1; i <= 4; i++)
+            {
+                Player p = new Player();
+
+                ////Number of cards per player are 9 hence Queue size is 9
+                p.cards = new Queue<Card>(9);
+                
+                //// iterating throgh 9 cards
+                for (int j = 1;j<=9;j++)
+                {
+                  p.cards.Enqueue(deckOfCards.TakeCard());
+                }
+                
+                players.Enqueue(p);
+            }
