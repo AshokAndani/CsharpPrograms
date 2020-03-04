@@ -23,3 +23,15 @@ namespace Stocks
             
             ////created the StockImplementation class
             StockImplementation im = new StockImplementation();
+switch(entered)
+            {
+                case 1: im.AddStock();
+                    break;
+                case 2: im.ValueOfStacks();
+                    break;
+                default: Console.WriteLine("Invalid Entry");
+                    break;
+            }
+        }
+    }
+}
