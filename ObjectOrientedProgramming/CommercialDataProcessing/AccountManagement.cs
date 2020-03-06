@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright file=Account.cs" company="Bridgelabz">
+// <copyright file=AccountManagement.cs" company="Bridgelabz">
 //   Copyright © 2020 Company="BridgeLabz"
 // </copyright>
 // <creator Name="ASHOKKUMAR"/>
@@ -10,24 +10,27 @@ namespace CommercialDataProcessing
     using System.Collections.Generic;
     using System.IO;
     using Newtonsoft.Json;
+
     /// <summary>
     /// this class manages the StockAccounts class
     /// </summary>
     public class AccountManagement
     {
-       private static string  path = @"D:\WindowsProjects\ObjectOrientedProgramming\ObjectOrientedProgramming\CommercialDataProcessing\Accounts.json";
- /// <summary>
+       private static string  path = @"C:\Users\yempc73\Desktop\FellowShip\ObjectOrientedProgramming\ObjectOrientedProgramming\CommercialDataProcessing\Accounts.json";
+       
+        /// <summary>
         /// this method is used to run the Account Management program
         /// </summary>
         public static void DriverMethod()
         {
-     ////creating own class to use its Methods
+            ////creating own class to use its Methods
             AccountManagement ac = new AccountManagement();
-            Console.WriteLine("Welcome to Stock Accounts" +
+            Console.WriteLine("Welcome to Stock Accounts\n" +
                 "Enter 1 to dispaly account report\n" +
                 "Enter 2 to remove an account\n" +
                 "Enter 3 to Add a New account");
-     switch (int.Parse(Console.ReadLine()))
+            
+            switch (int.Parse(Console.ReadLine()))
             {
                 case 1: Console.WriteLine("Enter Name: ");
                     ac.AcReport(Console.ReadLine());
@@ -41,6 +44,7 @@ namespace CommercialDataProcessing
                     break;
             }
         }
+
         /// <summary>
         /// to add new Accounts
         /// </summary>
@@ -57,15 +61,18 @@ namespace CommercialDataProcessing
             {
                 ls = JsonConvert.DeserializeObject<List<StockAccount>>(jfile);
             }
-Console.WriteLine("enter the Name: ");
+
+            Console.WriteLine("enter the Name: ");
             StockAccount ac = new StockAccount();
             ac.Fill(Console.ReadLine());
-ls.Add(ac);
+
+            ls.Add(ac);
 
             string serial = JsonConvert.SerializeObject(ls);
             File.WriteAllText(path, serial);
             Console.WriteLine("done");
-////directly writing into file
+
+            ////directly writing into file
             using (StreamWriter stream = File.CreateText(path))
             {
                 JsonSerializer serializer = new JsonSerializer();
@@ -74,13 +81,14 @@ ls.Add(ac);
 
             Console.WriteLine("Successfully added");
         }
-/// <summary>
+
+        /// <summary>
         /// to remove existing accounts
         /// </summary>
         /// <param name="name">user enters the name</param>
         public void Remove(string name)
         {
-    //// fetching string from json
+            //// fetching string from json
             string jfile = File.ReadAllText(path);
 
             //// initializing the Object
@@ -93,7 +101,8 @@ ls.Add(ac);
             {
                 ls = JsonConvert.DeserializeObject<List<StockAccount>>(jfile);
             }
-//// iterating through List of Objects
+            
+            //// iterating through List of Objects
             for (int i = 0; i < ls.Count; i++)
             {
                 if (ls[i].Name.Equals(name))
@@ -102,7 +111,8 @@ ls.Add(ac);
                     break;
                 }
             }
-//// directly writing into json file
+
+            //// directly writing into json file
             using (StreamWriter stream = File.CreateText(path))
             {
                 JsonSerializer serializer = new JsonSerializer();
@@ -111,13 +121,14 @@ ls.Add(ac);
 
             Console.WriteLine("removed successfully");
         }
-/// <summary>
+
+        /// <summary>
         /// this method is to display the details of respective account name
         /// </summary>
         /// <param name="name">this will get</param>
         public void AcReport(string name)
         {
-string jfile = File.ReadAllText(path);
+            string jfile = File.ReadAllText(path);
 
             List<StockAccount> ls;
             if (jfile.Length < 1)
@@ -128,7 +139,8 @@ string jfile = File.ReadAllText(path);
             {
                 ls = JsonConvert.DeserializeObject<List<StockAccount>>(jfile);
             }
-//// iterating the List of Account objects
+
+            //// iterating the List of Account objects
             for (int i = 0; i < ls.Count; i++)
             {
                 if (ls[i].Name.Equals(name))
