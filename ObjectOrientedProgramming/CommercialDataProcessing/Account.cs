@@ -30,18 +30,19 @@ namespace CommercialDataProcessing
         
         public List<int> StockPrice { get; set; }
         
-        public DateTime Timing = DateTime.Now;     
-	/// <summary>
+        public DateTime Timing = DateTime.Now;
+        
+        /// <summary>
         /// constructor to initialize the customer Name
         /// </summary>
         /// <param name="Name"></param>
         public void Fill(string Name)
         {
-
             ////taking the inputs from the user
             Console.WriteLine("Enter the Cash balance");
             this.Cash = double.Parse(Console.ReadLine());
-           ////initialized the Name
+            
+            ////initialized the Name
             this.Name = Name;
 
             Console.WriteLine("Enter the number of Stocks purchased");
@@ -51,6 +52,7 @@ namespace CommercialDataProcessing
             this.Shares = new List<int>();
             this.Stocks = new List<string>();
             this.StockPrice = new List<int>();
+
             ////loop to fetch the array details
             for (int i = 0; i < this.N; i++)
             {
@@ -62,12 +64,14 @@ namespace CommercialDataProcessing
                 this.StockPrice.Add(this.Shares[i] * int.Parse(Console.ReadLine()));
             }
         }
+       
         /// <summary>
         /// it returns sum of all the stocks and shares sum price
         /// </summary>
         /// <returns>the total stock amounts</returns>
         public double ValueOf()
-        {            double grandTotal = 0;
+        {
+            double grandTotal = 0;
 
             for (int i = 0; i < this.N; i++)
             {
@@ -76,18 +80,21 @@ namespace CommercialDataProcessing
 
             return grandTotal;
         }
+
         /// <summary>
         /// prints all the details of the Account
         /// </summary>
         public void PrintReport()
-        {Console.WriteLine("Customer Name: " + this.Name);
-            Console.WriteLine("available Cash is acc is: " + this.Cash);
-            Console.WriteLine("Timing : " + this.Timing);
+        {
+            Console.WriteLine("{0,-25}{1}","Customer Name is:",this.Name);
+            Console.WriteLine("{0,-25}{1}","Account Balance is:", this.Cash);
+            Console.Write("{0,-25}", "Account opened at:");
+            Console.WriteLine("{0:d} {0:t}",this.Timing);
             for (int i = 0; i < this.N; i++)
             {
-                Console.WriteLine("stock symbol:" + this.Stocks[i]);
-                Console.WriteLine("number of shares: " + this.Shares[i]);
-                Console.WriteLine("total Price of stock is: " + this.StockPrice[i]);
+                Console.WriteLine("{0,-25}{1}","stock symbol:", this.Stocks[i]);
+                Console.WriteLine("{0,-25}{1}","number of shares:", this.Shares[i]);
+                Console.WriteLine("{0,-25}{1}","total Price of stock is:", this.StockPrice[i]);
             }
         }
     }
