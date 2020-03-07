@@ -17,13 +17,14 @@ namespace InventoryManagement
     /// </summary>
     public class InventoryImplementation
     {
+        private static string filepath = @"C:\Users\yempc73\Desktop\FellowShip\ObjectOrientedProgramming\ObjectOrientedProgramming\InventoryManagement\JSON.json";
         /// <summary>
         /// this () will add the items to inventory
         /// </summary>
         public void Add()
         {
             ////fetching the json file
-            string jfile = File.ReadAllText(@"D:\WindowsProjects\ObjectOrientedProgramming\ObjectOrientedProgramming\InventoryManagement\JSON.json");
+            string jfile = File.ReadAllText(filepath);
 
             ////creating the inventory object and assgning the deserialized value to it
             Inventory iv;
@@ -38,7 +39,8 @@ namespace InventoryManagement
             {
                 sum = iv.Sum;
             }
-////creating a Seeds object to fill it in switch based on requirement
+
+            ////creating a Seeds object to fill it in switch based on requirement
             Seeds item = new Seeds();
 
             ////asking the user to choose the given option
@@ -62,6 +64,7 @@ namespace InventoryManagement
             {
                 sum = item.TotalPrice;
             }
+
             ////running a  based on user
             switch (entered)
             {
@@ -93,28 +96,32 @@ namespace InventoryManagement
                     Console.WriteLine("Invalid Entry try Again...");
                     break;
             }
+
+            //// adding the new inventory price to the Iv(Inventroy Object)
             iv.Sum = sum;
 
             ////now serializing and writing to file directly 
-            using (StreamWriter writer = File.CreateText(@"D:\WindowsProjects\ObjectOrientedProgramming\ObjectOrientedProgramming\InventoryManagement\JSON.json"))
+            using (StreamWriter writer = File.CreateText(filepath))
             {
                 JsonSerializer serializer = new JsonSerializer();
                 serializer.Serialize(writer, iv);
                 Console.WriteLine("new Product Added to the Inventory");
             }
         }
+
         /// <summary>
         /// this method deletes the brand specified by the user
         /// </summary>
         public void Delete()
-        { 
-           Console.WriteLine("Are you sure you Want to delete...items from Inventory: ");
+        {
+            Console.WriteLine("Are you sure you Want to delete...items from Inventory: ");
 
             //// fetching the jsonstring from the file
-            string jfile = File.ReadAllText(@"D:\WindowsProjects\ObjectOrientedProgramming\ObjectOrientedProgramming\InventoryManagement\JSON.json");
+            string jfile = File.ReadAllText(filepath);
 
             ////to deserialize the Object to use the Object
             Inventory iv = JsonConvert.DeserializeObject<Inventory>(jfile);
+
             Console.WriteLine("Enter 1--> for Rice\tEnter 2--> for Pulses\tEnter 3--> for Wheats\t");
 
             int entered = int.Parse(Console.ReadLine());
@@ -145,7 +152,7 @@ namespace InventoryManagement
                         if (s.brand.Equals(brand))
                         {
                             sum -= s.TotalPrice;
-                            iv.Rice.Remove(s);
+                            iv.Pulses.Remove(s);
                             break;
                         }
                     }
@@ -158,7 +165,7 @@ namespace InventoryManagement
                         if (s.brand.Equals(brand))
                         {
                             sum -= s.TotalPrice;
-                            iv.Rice.Remove(s);
+                            iv.Wheats.Remove(s);
                             break;
                         }
                     }
@@ -169,13 +176,48 @@ namespace InventoryManagement
                     break;
             }
 
+            //// replacing the total sum of the iv with substracted sum
+            iv.Sum = sum;
+            
             ////now filling the file with updated inventory
-            using (StreamWriter stream = File.CreateText(@"D:\WindowsProjects\ObjectOrientedProgramming\ObjectOrientedProgramming\InventoryManagement\JSON.json"))
+            using (StreamWriter stream = File.CreateText(filepath))
             {
                 JsonSerializer serializer = new JsonSerializer();
                 serializer.Serialize(stream, iv);
             }
         }
+
+        /// <summary>
+        /// to display the total price in inventory
+        /// </summary>
+        public void DisplayOutput()
+        {
+            ////converting the json file to String
+            string jfile = File.ReadAllText(filepath);
+            
+            ////to ensure the json has contents to deserialize
+            if(jfile.Length<1)
+            {
+                Console.WriteLine("Inventory is Empty Please add the contents");
+                return;
+            }
+
+            ////now desializing the json string
+            Inventory iv = JsonConvert.DeserializeObject<Inventory>(jfile);
+
+            Console.WriteLine("Enter 1 to show the total Enventory Cost\n Enter 2 to Display json string");
+            int entered = int.Parse(Console.ReadLine());
+
+            switch (entered)
+            {
+                case 1: Console.WriteLine("the total inventory cost is : " + iv.Sum);
+                    break;
+                case 2: Console.WriteLine(jfile) ;
+                    break;
+                default: Console.WriteLine("Invalid Entry");
+                    break;
+            }
+
+        }
     }
 }
-
