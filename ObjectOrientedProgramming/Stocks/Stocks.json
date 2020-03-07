@@ -1,17 +1,1 @@
-{
-  "StockList": [
-    {
-      "name": "aa",
-      "NumberOfShares": 30,
-      "SharePrice": 25000,
-      "StockPrice": 750000
-    },
-    {
-      "name": "bb",
-      "NumberOfShares": 20,
-      "SharePrice": 15000,
-      "StockPrice": 300000
-    }
-  ],
-  "grandTotal": 1050000
-}
+{"StockList":[{"name":"Google","NumberOfShares":12,"SharePrice":25000,"StockPrice":300000},{"name":"Facebook","NumberOfShares":30,"SharePrice":10000,"StockPrice":300000}],"grandTotal":600000}
