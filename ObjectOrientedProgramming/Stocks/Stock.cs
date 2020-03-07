@@ -9,16 +9,18 @@ namespace Stocks
     using System;
     using System.Collections.Generic;
     using System.Text;
- /// <summary>
+
+    /// <summary>
     /// this class represents information of an Stock
     /// </summary>
     public class Stock
     {
-     public String name { get; set; }
+        public String name { get; set; }
         public int NumberOfShares { get; set; }
         public int SharePrice { get; set; }
         public int StockPrice { get; set; }
-/// <summary>
+
+        /// <summary>
         /// string representation of Stock class
         /// </summary>
         /// <returns></returns>
@@ -27,7 +29,8 @@ namespace Stocks
             return String.Format("Name: {0}\nPrice: {1}\nNumber of Shares: {2}", name, SharePrice, NumberOfShares);
         }
     }
- /// <summary>
+
+    /// <summary>
     /// this class contains the list of stocks and total stock price
     /// </summary>
     public class StockPortfolio
