@@ -10,20 +10,20 @@ namespace Stocks
     using System.Collections.Generic;
     using System.IO;
     using System.Text;
-///summary
-/// this method simulates the stock
-///summary
- public class StockManagement
+
+    public class StockManagement
     {
-     public static void DriverMethod()
+        public static void DriverMethod()
         {
-            Console.WriteLine("Welcome to Stack Management \n" +
-                "Enter 1 to Add new Stock");
+            Console.WriteLine("Welcome to Stock Management \n" +
+                "Enter 1 to Add new Stock\n" +
+                "Enter 2 for the Total Value of Stock");
             int entered = int.Parse(Console.ReadLine());
             
             ////created the StockImplementation class
             StockImplementation im = new StockImplementation();
-switch(entered)
+
+            switch(entered)
             {
                 case 1: im.AddStock();
                     break;
