@@ -1,5 +1,5 @@
 ﻿/// --------------------------------------------------------------------------------------------------------------------
-/// <copyright file=AddressBookManagement.cs" company="Bridgelabz">
+/// <copyright file=AddressBookImplementation.cs" company="Bridgelabz">
 ///   Copyright © 2020 Company="BridgeLabz"
 /// </copyright>
 /// <creator name="ASHOKKUMAR"/>
@@ -11,14 +11,14 @@ namespace AddressBook
     using System.Collections.Generic;
     using System.Text;
 
- /// <summary>
+    /// <summary>
     /// this class controls the AddressBookImplementation
     /// </summary>
-    class AddressBookManagement
-    { 
- /// <summary>
- /// this () is responsible to manage all the operation related to AddressBook
-/// </summary>
+    public class AddressBookManagement
+    {
+        /// <summary>
+        /// this () is responsible to manage all the operation related to AddressBook
+        /// </summary>
         public static void DriverMethod()
         {
             ////creating the AddressBookImplementation object
@@ -30,7 +30,7 @@ namespace AddressBook
                 Console.WriteLine("Enter the String given below to Perform respective Operations" +
                     "\nDisplay--to display all the Persons info from List\n" +
                     "Add--to add a new Person\n" +
-                    "delete--to delete a Person\n" +
+                    "Delete--to Delete a Person\n" +
                     "Edit-- to edit Existing person's info");
                 string entered = Console.ReadLine();
 
@@ -47,8 +47,9 @@ namespace AddressBook
                         break;
                     default: Console.WriteLine("Invalid Entry");
                         break;
-                }    
-    ////this line is to stop the while loop
+                }
+
+                ////this line is to stop the while loop
                 Console.WriteLine("Enter yes/no to Continue");
                 if (Console.ReadLine().Equals("no"))
                 {
@@ -58,4 +59,6 @@ namespace AddressBook
                 ////clearing the Screen
                 Console.Clear();
             }
-        }}
+        }
+    }
+}
