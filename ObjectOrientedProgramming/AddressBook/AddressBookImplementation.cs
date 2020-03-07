@@ -7,26 +7,47 @@
 
 namespace AddressBook
 {
-    /// <summary>
-    /// this is the implementation of addressBook where Methods are written here 
-    /// </summary>
-    public class AddressBookImplementation
-    {
-    /// <summary>
-    /// this () adds a new Person to the json file
-    /// </summary>
-
     using System;
     using System.Collections.Generic;
     using System.IO;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
-public void AddPerson()
+    /// <summary>
+    /// this is the implementation of addressBook where Methods are written here 
+    /// </summary>
+    public class AddressBookImplementation
+    {
+        public static string path = @"C:\Users\yempc73\Desktop\FellowShip\ObjectOrientedProgramming\ObjectOrientedProgramming\AddressBook\AddressBook.json";
+    /// <summary>
+    /// this () adds a new Person to the json file
+    /// </summary>
+        public void AddPerson()
         {
-            //////taking input from the user
+            ////fething string from the file
+            string jsonfile = File.ReadAllText(path);
+
+            ////validating the jsonfile not to be Empty
+            List<Person> persons;
+            if (jsonfile.Length != 0)
+            {
+                persons = (List<Person>)JsonConvert.DeserializeObject<List<Person>>(jsonfile);
+            }
+            else persons = new List<Person>();
+            ////taking input from the user
             Console.Write("Enter firstName: ");
             string firstName = Console.ReadLine();
+
+            //// checking wether the name exists
+            foreach (Person tp in persons)
+            {
+                if (tp.firstName.Equals(firstName))
+                {
+                    Console.WriteLine("details with this name already exists...!");
+                    return;
+                }
+            }
+
             Console.Write("Enter lastName: ");
             string lastName = Console.ReadLine();
             Console.Write("Enter phoneNumber: ");
@@ -39,6 +60,7 @@ public void AddPerson()
             string zip = Console.ReadLine();
             Console.Write("Enter address: ");
             string address = Console.ReadLine();
+
             //////initializing the Object with user input
             Person p = new Person()
             {
@@ -50,15 +72,10 @@ public void AddPerson()
                 city = city,
                 address = address
             };
-            //////fething string from the file
-            string jsonfile = File.ReadAllText(@"D:\WindowsProjects\ObjectOrientedProgramming\ObjectOrientedProgramming\AddressBook\AddressBook.json");
 
-            //////now creating a List to Store the Person objects
-            List<Person> persons = new List<Person>();
-            if (jsonfile.Length != 0)
-            {
-                persons = (List<Person>)JsonConvert.DeserializeObject<List<Person>>(jsonfile);
-            }
+            
+
+
 
             persons.Add(p);
 
@@ -66,7 +83,7 @@ public void AddPerson()
             string serialize = JsonConvert.SerializeObject(persons);
 
             ////now json format is writing into a .json file
-            File.WriteAllText(@"D:\WindowsProjects\ObjectOrientedProgramming\ObjectOrientedProgramming\AddressBook\AddressBook.json", serialize);
+            File.WriteAllText(path, serialize);
             return;
         }
 
@@ -75,14 +92,13 @@ public void AddPerson()
         /// </summary>
         public void Delete()
         {
-
             ////getting the name of the person to delete the information
             Console.WriteLine("Enter the Name of the Person");
             string firstName = Console.ReadLine();
 
             //////this will read json file
-            string jsonfile = File.ReadAllText(@"D:\WindowsProjects\ObjectOrientedProgramming\ObjectOrientedProgramming\AddressBook\AddressBook.json");
- 
+            string jsonfile = File.ReadAllText(path);
+
             //////deserializing the json content
             List<Person> p;
                 
@@ -101,42 +117,51 @@ public void AddPerson()
             string serialize = JsonConvert.SerializeObject(p);
 
             ////Re-writing the json file with deletion
-            File.WriteAllText(@"D:\WindowsProjects\ObjectOrientedProgramming\ObjectOrientedProgramming\AddressBook\AddressBook.json", serialize);
+            File.WriteAllText(path, serialize);
             return;
-        
-}
-
+        }
 
         /// <summary>
         /// this () edits the details given by the Person
         /// </summary>
         public void Edit()
         {
+            ////extracting the json contents in the form of string
+            string jsonfile = File.ReadAllText(path);
+
+            //// validating the json file
+            if (jsonfile.Length < 1)
+            {
+                Console.WriteLine("AddressBook is Empty Please Add Details");
+                return;
+            }
+
+            List<Person> p = (List<Person>)JsonConvert.DeserializeObject<List<Person>>(jsonfile);
+
+            ////name suggestions for user Interface
+            Console.WriteLine("Name Suggestions");
+            foreach (Person person in p)
+            {
+                Console.Write("\""+person.firstName+"\" ");
+            }
 
             ////this is to choose the Person From the List
-            Console.WriteLine("Enter the Name of the Person");
+            Console.WriteLine("\nEnter the Name of the Person to edit");
             string firstName = Console.ReadLine();
            
             ////this line is to show the user to select attribute represented character
             Console.Write("choose the detail you want to change..\n lastName(L)\t" +
                 "address(A)\tcity(C)\tstate(S)\tphoneNumber(P)\tzip(Z)\n");
             
-            ////extracting the json contents in the form of string
-            string jsonfile = File.ReadAllText(@"D:\WindowsProjects\ObjectOrientedProgramming\ObjectOrientedProgramming\AddressBook\AddressBook.json");
-
-            ////initializing the List to use it multiples times further
-            List<Person> p;
-
-            ////this will convert the json string to object
-            p = (List<Person>)JsonConvert.DeserializeObject<List<Person>>(jsonfile);
-                 ////iterating the list to check catch the required object
+            ////iterating the list to check catch the required object
             foreach (Person x in p)
             {
                 if (x.firstName.Equals(firstName))
                 {
                     char ch = Console.ReadLine()[0];
                     Console.Write("Enter the replacing detail: ");
-                    string replace = Console.ReadLine();                    switch (ch)
+                    string replace = Console.ReadLine();
+                    switch (ch)
                     {
                         case 'L':
                             Console.WriteLine(x.lastName + " is replaced with " + replace); 
@@ -171,7 +196,7 @@ public void AddPerson()
             
             string serialize = JsonConvert.SerializeObject(p);
             
-            File.WriteAllText(@"D:\WindowsProjects\ObjectOrientedProgramming\ObjectOrientedProgramming\AddressBook\AddressBook.json", serialize);
+            File.WriteAllText(path, serialize);
 
             return;
         }
@@ -181,9 +206,8 @@ public void AddPerson()
         /// </summary>
         public void DisplayJson()
         {
-}
             ////fetching the json file to deserialize
-            string jsonfile = File.ReadAllText(@"D:\WindowsProjects\ObjectOrientedProgramming\ObjectOrientedProgramming\AddressBook\AddressBook.json");
+            string jsonfile = File.ReadAllText(path);
 
             ////deserializing the json state
             List<Person> p = (List<Person>)JsonConvert.DeserializeObject<List<Person>>(jsonfile);
@@ -219,7 +243,5 @@ public void AddPerson()
                 "phoneNumber: {2}\ncity:        {3}\nstate:       {4}\nzip:         {5}\naddress:     {6}"
                 , firstName, lastName,phoneNumber, city,state,zip,address);
         }
-    
-}       
-}
+    }
 }
