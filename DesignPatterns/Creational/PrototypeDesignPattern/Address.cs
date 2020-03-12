@@ -19,3 +19,8 @@ namespace DesignPatterns.Creational.PrototypeDesignPattern
             this.state = state;
             this.Country = country;
        }
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
