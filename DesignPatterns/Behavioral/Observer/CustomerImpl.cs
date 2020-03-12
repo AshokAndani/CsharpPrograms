@@ -5,3 +5,8 @@
 namespace DesignPatterns.Behavioral.Observer
 {
     using System;
+/// <summary>
+    ///  this class represents the customers who needs to get notified when the Mobile Phones are available
+    /// </summary>
+    public class CustomerImpl : ICustomer
+    {
