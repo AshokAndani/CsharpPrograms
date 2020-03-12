@@ -9,4 +9,13 @@ namespace DesignPatterns.Creational.FactoryPattern
     ///  Server class which implements the Computer
     /// </summary>
     class Server : Computer
-    {
+    {	
+	private string ram;
+        private string hdd;
+        private string cpu;
+        public Server(string cpu, string hdd, string ram)
+        {
+            this.cpu = cpu;
+            this.hdd = hdd;
+            this.ram = ram;
+        }
