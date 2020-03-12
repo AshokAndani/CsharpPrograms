@@ -27,3 +27,22 @@ namespace DesignPatterns.Creational.SingletonPattern
         {
             Console.WriteLine("this is the "+ ++count +" Object");
         }
+        /// <summary>
+        ///  single-locking logic where the Instance is created only if the instance is null
+        /// </summary>
+        public static SingleCheckPattern Instance
+        {
+            get
+            {
+                lock (locker)
+                {
+                    if (instance == null)
+                    {
+                       instance = new SingleCheckPattern();
+                    }
+                    return instance;
+                }
+            }
+        }
+    }
+}
