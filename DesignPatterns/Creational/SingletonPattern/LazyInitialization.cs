@@ -16,3 +16,7 @@ namespace DesignPatterns.Creational.SingletonPattern
         /// </summary>
         private LazyInitialization()
         { }
+        /// <summary>
+        /// Lazy initialization using the Lazy Type which is internally thread safe
+        /// </summary>
+        private static readonly Lazy<LazyInitialization> lazy = new Lazy<LazyInitialization>(() => new LazyInitialization());
