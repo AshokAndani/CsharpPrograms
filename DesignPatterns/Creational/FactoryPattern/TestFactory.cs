@@ -5,3 +5,8 @@
 namespace DesignPatterns.Creational.FactoryPattern
 {
     using System;
+     /// <summary>
+    ///  TestFactory class for testing the Factory method
+    /// </summary>
+    public class TestFactory
+    {
