@@ -11,3 +11,7 @@ namespace DesignPatterns.Creational.PrototypeDesignPattern
     /// </summary>
     public class PersonShallowCopy : ICloneable
     {
+
+        public string name;
+        public int age;
+        public Address address;
