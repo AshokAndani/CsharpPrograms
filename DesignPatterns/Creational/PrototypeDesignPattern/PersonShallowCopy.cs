@@ -15,3 +15,12 @@ namespace DesignPatterns.Creational.PrototypeDesignPattern
         public string name;
         public int age;
         public Address address;
+
+        /// <summary>
+        /// overridden the clone() from ICloneable
+        /// </summary>
+        /// <returns>copy of the Object</returns>
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
