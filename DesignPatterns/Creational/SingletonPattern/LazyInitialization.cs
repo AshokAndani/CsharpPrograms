@@ -10,3 +10,9 @@ namespace DesignPatterns.Creational.SingletonPattern
     /// </summary>
     public sealed class LazyInitialization
     {
+
+        /// <summary>
+        /// making the constructor Private so that no one invoke this class instance
+        /// </summary>
+        private LazyInitialization()
+        { }
