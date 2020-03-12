@@ -14,3 +14,10 @@ namespace DesignPatterns.Creational.SingletonPattern
         /// to count how many instances are created
         /// </summary>
         private static int count = 0;
+        /// <summary>
+        ///  making the constructor private
+        /// </summary>
+        private NormalClass()
+        {
+            Console.WriteLine("number of Objects created "+ ++count);
+        }
