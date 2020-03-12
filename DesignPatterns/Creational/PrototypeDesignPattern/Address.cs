@@ -10,3 +10,12 @@ namespace DesignPatterns.Creational.PrototypeDesignPattern
     /// </summary>
     public class Address : ICloneable
     {
+        public string city;
+        public string state;
+        public string Country;
+        public Address(string city, string state, string country)
+        {
+            this.city = city;
+            this.state = state;
+            this.Country = country;
+       }
