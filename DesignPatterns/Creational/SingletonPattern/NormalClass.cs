@@ -5,3 +5,8 @@
 namespace DesignPatterns.Creational.SingletonPattern
 {
     using System;
+    /// <summary>
+    ///  this class represents the normal classes which does not follow singleton pattern rules
+    /// </summary>
+    public class NormalClass
+    {
