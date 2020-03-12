@@ -20,3 +20,10 @@ namespace DesignPatterns.Creational.SingletonPattern
 
         //// declaring the variable to initialize through the public Instance Variable
         private static SingleCheckPattern instance = null;
+        /// <summary>
+        ///  private constructor so that no one can create the instance of this class 
+        /// </summary>
+        private SingleCheckPattern()
+        {
+            Console.WriteLine("this is the "+ ++count +" Object");
+        }
