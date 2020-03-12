@@ -23,3 +23,14 @@ namespace DesignPatterns.Behavioral.Observer
         {
             this.name = name;
         }
+        /// <summary>
+        ///  this is used to update the customers about the mobile phones availablity
+        /// </summary>
+        /// <param name="shop"></param>
+        public void Update(MobileShop shop)
+        {
+            string format = "Hello, {0} {1} is available for Purchase";
+            Console.WriteLine(format,this.name,shop.model);
+        }
+    }
+}
