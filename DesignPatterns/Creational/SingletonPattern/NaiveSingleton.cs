@@ -16,3 +16,11 @@ namespace DesignPatterns.Creational.SingletonPattern
         /// declaring the instance which will be assigned throw an static Method
         /// </summary>
         private static NaiveSingleton naive;
+        /// <summary>
+        ///  making the constructor as Private so that no-one can create its instance
+        /// </summary>
+        private NaiveSingleton()
+        {
+            //// this is to Notify how many times the constructor is called
+            Console.WriteLine("Cunstructor of Naive Called " + ++count);
+        }
