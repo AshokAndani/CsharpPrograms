@@ -24,3 +24,20 @@ namespace DesignPatterns.Creational.SingletonPattern
             //// this is to Notify how many times the constructor is called
             Console.WriteLine("Cunstructor of Naive Called " + ++count);
         }
+        /// <summary>
+        /// this is a public method which is responsible to create only one instance
+        /// </summary>
+        /// <returns>NaiveSingleton</returns>
+        public static NaiveSingleton Instance
+        {
+            get
+            {
+                if (naive == null)
+                {
+                    naive = new NaiveSingleton();
+                }
+                return naive;
+            }
+        }
+    }
+}
