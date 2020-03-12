@@ -24,3 +24,10 @@ namespace DesignPatterns.Creational.PrototypeDesignPattern
         {
             return this.MemberwiseClone();
         }
+        public override string ToString()
+        {
+            return string.Format("City: {0}\t\tState: {1}\tCountry: {2}\n", this.city, this.state, this.Country);
+
+        }
+    }
+}
