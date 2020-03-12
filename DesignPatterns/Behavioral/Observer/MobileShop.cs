@@ -37,3 +37,12 @@ namespace DesignPatterns.Behavioral.Observer
                 }
             }
         }
+
+        /// <summary>
+        /// to add the customers  to the List to get notified
+        /// </summary>
+        /// <param name="customer"></param>
+        public void Attach(CustomerImpl customer)
+        {
+            this.customers.Add(customer);
+        }
