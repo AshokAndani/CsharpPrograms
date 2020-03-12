@@ -19,3 +19,28 @@ namespace DesignPatterns.Creational.SingletonPattern
 
         //// The Object which acts as a locker for threads entering to create the instance
         private static Object locker = new object();
+        /// <summary>
+        /// this method contains the logic to filter the threads Entering to create the new instance
+        /// with double checking it increases the Performance as well
+        /// </summary>
+        public static DoubleCheckPattern Instance
+        {
+            get
+            {
+                //// here it is the first checking for thread entry
+                if (instance == null)
+                {
+                    //// here the second entry if the 1st checking is cleared 
+                    //// and this stage is responsible for the decrease in Performance
+                    lock (locker)
+                    {
+                        if (instance == null)
+                        {
+                            instance = new DoubleCheckPattern();
+                        }
+                    }
+                }
+
+                return instance;
+            }
+        }
