@@ -24,3 +24,13 @@ namespace DesignPatterns.Creational.PrototypeDesignPattern
         {
             return this.MemberwiseClone();
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns>string format of Object</returns>
+        public override string ToString()
+        {
+            return string.Format("FullName: {0} \nAge: {1}\nAddress: {2}",this.name,  this.age, this.address);
+        }
+    }
+}
