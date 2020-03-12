@@ -5,3 +5,9 @@
 namespace DesignPatterns.Creational.SingletonPattern
 {
     using System;
+    /// <summary>
+    ///  The class whose instance to be created only once
+    ///  Not good in multi-thread Environment
+    /// </summary>
+    public sealed class NaiveSingleton
+    {
