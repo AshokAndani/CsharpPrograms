@@ -12,3 +12,11 @@ namespace DesignPatterns.Creational.SingletonPattern
     /// </summary>
     public sealed class SingleCheckPattern
     {
+        //// this is to check how many times the Constructor is called
+        private int count = 0;
+
+        //// this object is used as Locker to keep ensure only one thread should attempt to create the instance at a time
+        private static Object locker = new object();
+
+        //// declaring the variable to initialize through the public Instance Variable
+        private static SingleCheckPattern instance = null;
