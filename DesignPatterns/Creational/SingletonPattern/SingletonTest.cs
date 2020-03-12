@@ -15,3 +15,11 @@ namespace DesignPatterns.Creational.SingletonPattern
             NormalClass t1, t2;
             t1 = NormalClass.GetNormalClass();
             t2 = NormalClass.GetNormalClass();
+
+            //// checking for NaiveSingleton in multi-thread Environment
+            Console.WriteLine("------------Naive Pattern fails for 1 instance in multi-thread Environment-------------");
+            NaiveSingleton n1, n2;
+            Parallel.Invoke(
+                () => n1 = NaiveSingleton.Instance,
+                ()=> n2=NaiveSingleton.Instance
+                ) ;
