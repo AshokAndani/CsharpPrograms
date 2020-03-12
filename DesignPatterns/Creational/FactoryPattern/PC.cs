@@ -4,11 +4,11 @@
 // <author>ASHOKKUMAR</author>
 namespace DesignPatterns.Creational.FactoryPattern
 {
-using System;
+    using System;
 
     internal class PC : Computer
-    {    
-	private string cpu;
+    {
+        private string cpu;
         private string hdd;
         private string ram;
         public PC(string cpu, string hdd, string ram)

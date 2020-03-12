@@ -5,12 +5,13 @@
 namespace DesignPatterns.Creational.FactoryPattern
 {
     using System;
+
     /// <summary>
     ///  Server class which implements the Computer
     /// </summary>
     class Server : Computer
-    {	
-	private string ram;
+    {
+        private string ram;
         private string hdd;
         private string cpu;
         public Server(string cpu, string hdd, string ram)
@@ -19,7 +20,8 @@ namespace DesignPatterns.Creational.FactoryPattern
             this.hdd = hdd;
             this.ram = ram;
         }
-	public override string GetCPU()
+
+        public override string GetCPU()
         {
             return this.cpu;
         }

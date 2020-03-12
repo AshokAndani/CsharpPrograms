@@ -5,12 +5,13 @@
 namespace DesignPatterns.Creational.FactoryPattern
 {
     using System;
-     /// <summary>
+
+    /// <summary>
     ///  TestFactory class for testing the Factory method
     /// </summary>
     public class TestFactory
     {
-     /// <summary>
+        /// <summary>
         /// to run the code without creating the object of this class
         /// </summary>
         public static void DriverMethod()

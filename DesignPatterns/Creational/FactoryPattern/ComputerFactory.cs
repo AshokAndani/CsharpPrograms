@@ -4,7 +4,6 @@
 // <author>ASHOKKUMAR</author>
 namespace DesignPatterns.Creational.FactoryPattern
 {
-
     using System;
 
     /// <summary>
@@ -12,7 +11,6 @@ namespace DesignPatterns.Creational.FactoryPattern
     /// </summary>
     public class ComputerFactory
     {
-
         /// <summary>
         /// this is the main static factory method that binds the Objects on type
         /// </summary>
