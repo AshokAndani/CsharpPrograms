@@ -15,3 +15,8 @@ namespace DesignPatterns.Creational.PrototypeDesignPattern
         /// </summary>
         public static void DriverMethod()
         {
+            //// simulates the PersonShallowCopy class
+            PersonShallowCopy originalShallow = new PersonShallowCopy();
+            originalShallow.name = "Ashok";
+            originalShallow.age = 23;
+            originalShallow.address = new Address("Banglore", "Karnataka", "India");
