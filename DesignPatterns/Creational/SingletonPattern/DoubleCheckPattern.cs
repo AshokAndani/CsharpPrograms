@@ -44,3 +44,17 @@ namespace DesignPatterns.Creational.SingletonPattern
                 return instance;
             }
         }
+        /// <summary>
+        /// here this constructor is reflection safe were even the reflection cannot create the object of this class
+        /// </summary>
+        private DoubleCheckPattern()
+        {
+            if (instance != null)
+            {
+                throw new Exception("cannot create another instance ");
+            }
+
+            Console.WriteLine("count of Objects " + ++count);
+        }
+    }
+}
