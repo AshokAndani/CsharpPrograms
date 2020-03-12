@@ -11,3 +11,15 @@ namespace DesignPatterns.Structural.Adapter
     /// </summary>
     class ManufacturerData
     {
+        /// <summary>
+        ///  this method return the the list of Manufacturers
+        /// </summary>
+        /// <returns>List of Manufacturers</returns>
+        public static List<Manufacturer> GetManufacturers() =>
+            //// used lambda expression for writing the methods
+            new List<Manufacturer>
+            { new Manufacturer{ name = "ashok", place = "banlgore" },
+                new Manufacturer{ name = "harish", place = "Pune" }
+            };
+    }
+}
