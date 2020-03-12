@@ -6,3 +6,5 @@ namespace DesignPatterns.Creational.SingletonPattern
 {
     using System;
     using System.Threading.Tasks;
+    class SingletonTest
+    {
