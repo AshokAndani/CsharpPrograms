@@ -55,3 +55,18 @@ namespace DesignPatterns.Behavioral.Observer
         {
             this.customers.Add(customer);
         }
+
+        /// <summary>
+        /// this method is to notify the customers 
+        /// </summary>
+        public void Notify()
+        {
+            foreach (CustomerImpl customer in this.customers)
+            {
+                customer.Update(this);
+            }
+        }
+
+      
+    }
+}
