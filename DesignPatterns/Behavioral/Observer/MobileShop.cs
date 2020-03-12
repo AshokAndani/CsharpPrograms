@@ -14,3 +14,8 @@ namespace DesignPatterns.Behavioral.Observer
         public string model;
         private bool avaialblity;
         private List<CustomerImpl> customers = new List<CustomerImpl>();
+
+        public MobileShop(string model)
+        {
+            this.model = model;
+        }
