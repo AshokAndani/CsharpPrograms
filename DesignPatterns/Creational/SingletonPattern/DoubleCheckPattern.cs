@@ -11,3 +11,11 @@ namespace DesignPatterns.Creational.SingletonPattern
     /// </summary> 
     public sealed class DoubleCheckPattern
     {
+        //// this is to check how many instances are being created
+        private static int count = 0;
+
+        //// initializing the instance which will be initialized later
+        private static DoubleCheckPattern instance = null;
+
+        //// The Object which acts as a locker for threads entering to create the instance
+        private static Object locker = new object();
