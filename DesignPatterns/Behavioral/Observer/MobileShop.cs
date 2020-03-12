@@ -6,3 +6,8 @@ namespace DesignPatterns.Behavioral.Observer
 {
     using System;
     using System.Collections.Generic;
+    /// <summary>
+    /// the mobile class which is used to process the List of customers
+    /// </summary>
+    public class MobileShop
+    {
