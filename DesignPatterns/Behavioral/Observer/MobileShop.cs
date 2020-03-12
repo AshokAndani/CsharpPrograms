@@ -19,3 +19,21 @@ namespace DesignPatterns.Behavioral.Observer
         {
             this.model = model;
         }
+        /// <summary>
+        /// this method is for checking the availablity of the mobiles
+        /// </summary>
+        public bool Availability
+        {
+            get
+            {
+                return this.avaialblity;
+            }
+            set
+            {
+                if (this.avaialblity != value)
+                {
+                    this.avaialblity = value;
+                    this.Notify();
+                }
+            }
+        }
