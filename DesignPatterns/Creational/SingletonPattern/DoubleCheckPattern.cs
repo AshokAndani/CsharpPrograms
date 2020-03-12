@@ -5,3 +5,9 @@
 namespace DesignPatterns.Creational.SingletonPattern
 {
     using System;
+    /// <summary>
+    ///  this class is totally thread safe which ensures double check locking
+    ///  and creates only one instance of the class
+    /// </summary> 
+    public sealed class DoubleCheckPattern
+    {
