@@ -11,11 +11,10 @@ namespace DesignPatterns.Creational.PrototypeDesignPattern
     /// </summary>
     public class PersonShallowCopy : ICloneable
     {
-
         public string name;
         public int age;
         public Address address;
-
+        
         /// <summary>
         /// overridden the clone() from ICloneable
         /// </summary>
@@ -24,6 +23,7 @@ namespace DesignPatterns.Creational.PrototypeDesignPattern
         {
             return this.MemberwiseClone();
         }
+
         /// <summary>
         /// 
         /// </summary>

@@ -5,11 +5,13 @@
 namespace DesignPatterns.Creational.PrototypeDesignPattern
 {
     using System;
-/// <summary>
+
+    /// <summary>
     ///  this class simulates the example for successfull nested cloning
     /// </summary>
     public class PersonDeepCopy : PersonShallowCopy
     {
+
         /// <summary>
         /// this is the overriden method from the ICloneable to clone the Objects
         /// </summary>
