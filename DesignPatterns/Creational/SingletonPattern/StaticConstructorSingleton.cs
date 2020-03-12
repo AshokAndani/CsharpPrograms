@@ -10,3 +10,5 @@ namespace DesignPatterns.Creational.SingletonPattern
     /// </summary>
     public sealed  class StaticConstructorSingleton
     {
+        //// this variable is to initialize with one instance which will be returned by the public method
+        private static readonly StaticConstructorSingleton instance = new StaticConstructorSingleton();
