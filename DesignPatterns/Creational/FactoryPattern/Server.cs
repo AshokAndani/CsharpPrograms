@@ -5,3 +5,8 @@
 namespace DesignPatterns.Creational.FactoryPattern
 {
     using System;
+    /// <summary>
+    ///  Server class which implements the Computer
+    /// </summary>
+    class Server : Computer
+    {
