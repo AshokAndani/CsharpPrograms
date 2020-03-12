@@ -6,6 +6,7 @@ namespace DesignPatterns.Structural.Adapter
 {
     using System;
     using System.Xml.Linq;
+
     /// <summary>
     ///  this class simulates the adapter Pattern
     /// </summary>

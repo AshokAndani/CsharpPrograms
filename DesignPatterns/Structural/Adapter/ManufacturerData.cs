@@ -6,6 +6,7 @@ namespace DesignPatterns.Structural.Adapter
 {
     using System;
     using System.Collections.Generic;
+
     /// <summary>
     /// holds the information about multiple manufacturers
     /// </summary>

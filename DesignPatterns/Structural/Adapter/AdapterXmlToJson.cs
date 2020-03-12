@@ -8,6 +8,7 @@ namespace DesignPatterns.Structural.Adapter
     using System.Xml.Linq;
     using System.Linq;
     using Newtonsoft.Json;
+
     /// <summary>
     ///  this class the called as adapter because this bridges the gap between the code which cannot be changed but the client
     ///  needs the change in output
