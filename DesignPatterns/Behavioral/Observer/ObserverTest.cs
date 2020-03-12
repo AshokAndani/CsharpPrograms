@@ -5,6 +5,7 @@
 namespace DesignPatterns.Behavioral.Observer
 {
     using System;
+
     /// <summary>
     /// this class is used to run the test Observer Pattern
     /// </summary>

@@ -20,5 +20,3 @@ namespace DesignPatterns.Behavioral.Observer
         }
     }
 }
-
-

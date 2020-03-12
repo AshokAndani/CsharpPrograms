@@ -6,6 +6,7 @@ namespace DesignPatterns.Behavioral.Observer
 {
     using System;
     using System.Collections.Generic;
+
     /// <summary>
     /// the mobile class which is used to process the List of customers
     /// </summary>
@@ -19,6 +20,7 @@ namespace DesignPatterns.Behavioral.Observer
         {
             this.model = model;
         }
+
         /// <summary>
         /// this method is for checking the availablity of the mobiles
         /// </summary>
@@ -37,7 +39,7 @@ namespace DesignPatterns.Behavioral.Observer
                 }
             }
         }
-
+        
         /// <summary>
         /// to add the customers  to the List to get notified
         /// </summary>

@@ -5,6 +5,7 @@
 namespace DesignPatterns.Behavioral.Observer
 {
     using System;
+
     /// <summary>
     ///  this is the interface which has to be implemented
     /// </summary>

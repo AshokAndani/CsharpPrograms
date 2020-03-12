@@ -5,12 +5,13 @@
 namespace DesignPatterns.Behavioral.Observer
 {
     using System;
-/// <summary>
+    
+    /// <summary>
     ///  this class represents the customers who needs to get notified when the Mobile Phones are available
     /// </summary>
     public class CustomerImpl : ICustomer
-    {	
-    /// <summary>
+    {
+        /// <summary>
         /// Customer name
         /// </summary>
         private string name;
@@ -23,6 +24,7 @@ namespace DesignPatterns.Behavioral.Observer
         {
             this.name = name;
         }
+
         /// <summary>
         ///  this is used to update the customers about the mobile phones availablity
         /// </summary>
