@@ -4,4 +4,9 @@
 // <author>ASHOKKUMAR</author>
 namespace DesignPatterns.Creational.PrototypeDesignPattern
 {
-    using System;
+    using System;	
+    /// <summary>
+    ///  Address class will be used to store information of a person in nested form
+    /// </summary>
+    public class Address : ICloneable
+    {
