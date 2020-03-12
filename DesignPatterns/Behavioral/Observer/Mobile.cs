@@ -11,3 +11,14 @@ namespace DesignPatterns.Behavioral.Observer
     /// </summary>
     public class Mobile : MobileShop
     {
+        /// <summary>
+        /// constructor to initialize the model name
+        /// </summary>
+        /// <param name="model">Model name of Mobile</param>
+        public Mobile(string model) : base(model)
+        {
+        }
+    }
+}
+
+
