@@ -10,3 +10,15 @@ namespace DesignPatterns.Creational.PrototypeDesignPattern
     /// </summary>
     public class PersonDeepCopy : PersonShallowCopy
     {
+        /// <summary>
+        /// this is the overriden method from the ICloneable to clone the Objects
+        /// </summary>
+        /// <returns></returns>
+        public new object Clone()
+        {
+            PersonDeepCopy deep = (PersonDeepCopy)this.MemberwiseClone();
+            deep.address = (Address)this.address.Clone();
+            return deep;
+        }
+    }
+}
