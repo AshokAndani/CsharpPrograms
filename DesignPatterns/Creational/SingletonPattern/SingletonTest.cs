@@ -1,4 +1,4 @@
-﻿// <copyright file="SingletonTest.cs" company="BridgeLabz">
+﻿// <copyright file="Singleton.cs" company="BridgeLabz">
 //     BridgeLabs. All rights reserved.
 // </copyright>
 // <author>ASHOKKUMAR</author>
@@ -23,6 +23,7 @@ namespace DesignPatterns.Creational.SingletonPattern
                 () => n1 = NaiveSingleton.Instance,
                 ()=> n2=NaiveSingleton.Instance
                 ) ;
+
             //// checking for DoubleCheckPattern under multi-Thread Environment
             Console.WriteLine("------DuobleCheckpattern will not let anyone to create multiple instance even in multi-thread Environment-------");
             DoubleCheckPattern d1, d2;

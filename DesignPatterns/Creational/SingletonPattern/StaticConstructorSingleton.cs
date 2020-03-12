@@ -5,6 +5,7 @@
 namespace DesignPatterns.Creational.SingletonPattern
 {
     using System;
+
     /// <summary>
     ///  by using the static constructor  which will make the class execute only once 
     /// </summary>
@@ -12,7 +13,7 @@ namespace DesignPatterns.Creational.SingletonPattern
     {
         //// this variable is to initialize with one instance which will be returned by the public method
         private static readonly StaticConstructorSingleton instance = new StaticConstructorSingleton();
-
+        
         /// <summary>
         ///  declaring the constructor as static
         /// </summary>
@@ -23,7 +24,7 @@ namespace DesignPatterns.Creational.SingletonPattern
         /// </summary>
         private StaticConstructorSingleton()
         { }
-
+      
         /// <summary>
         ///  Gives the Instance
         /// </summary>

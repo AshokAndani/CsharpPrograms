@@ -5,6 +5,7 @@
 namespace DesignPatterns.Creational.SingletonPattern
 {
     using System;
+
     /// <summary>
     ///  The class whose instance to be created only once
     ///  Not good in multi-thread Environment
@@ -16,6 +17,7 @@ namespace DesignPatterns.Creational.SingletonPattern
         /// declaring the instance which will be assigned throw an static Method
         /// </summary>
         private static NaiveSingleton naive;
+
         /// <summary>
         ///  making the constructor as Private so that no-one can create its instance
         /// </summary>
@@ -24,6 +26,7 @@ namespace DesignPatterns.Creational.SingletonPattern
             //// this is to Notify how many times the constructor is called
             Console.WriteLine("Cunstructor of Naive Called " + ++count);
         }
+
         /// <summary>
         /// this is a public method which is responsible to create only one instance
         /// </summary>

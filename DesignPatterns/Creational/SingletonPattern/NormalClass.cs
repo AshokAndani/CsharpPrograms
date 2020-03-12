@@ -5,15 +5,18 @@
 namespace DesignPatterns.Creational.SingletonPattern
 {
     using System;
+
     /// <summary>
     ///  this class represents the normal classes which does not follow singleton pattern rules
     /// </summary>
     public class NormalClass
     {
+
         /// <summary>
         /// to count how many instances are created
         /// </summary>
         private static int count = 0;
+
         /// <summary>
         ///  making the constructor private
         /// </summary>
@@ -21,6 +24,7 @@ namespace DesignPatterns.Creational.SingletonPattern
         {
             Console.WriteLine("number of Objects created "+ ++count);
         }
+        
         /// <summary>
         /// only public method to create the instance of this class
         /// </summary>

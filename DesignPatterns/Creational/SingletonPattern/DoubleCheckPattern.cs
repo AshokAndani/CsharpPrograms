@@ -5,6 +5,7 @@
 namespace DesignPatterns.Creational.SingletonPattern
 {
     using System;
+
     /// <summary>
     ///  this class is totally thread safe which ensures double check locking
     ///  and creates only one instance of the class
@@ -19,6 +20,7 @@ namespace DesignPatterns.Creational.SingletonPattern
 
         //// The Object which acts as a locker for threads entering to create the instance
         private static Object locker = new object();
+
         /// <summary>
         /// this method contains the logic to filter the threads Entering to create the new instance
         /// with double checking it increases the Performance as well
@@ -44,6 +46,7 @@ namespace DesignPatterns.Creational.SingletonPattern
                 return instance;
             }
         }
+
         /// <summary>
         /// here this constructor is reflection safe were even the reflection cannot create the object of this class
         /// </summary>
