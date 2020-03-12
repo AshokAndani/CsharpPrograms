@@ -1,4 +1,4 @@
-﻿// <copyright file="Singleton.cs" company="BridgeLabz">
+﻿// <copyright file="SingletonTest.cs" company="BridgeLabz">
 //     BridgeLabs. All rights reserved.
 // </copyright>
 // <author>ASHOKKUMAR</author>
