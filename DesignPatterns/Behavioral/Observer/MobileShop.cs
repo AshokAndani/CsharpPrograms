@@ -11,3 +11,6 @@ namespace DesignPatterns.Behavioral.Observer
     /// </summary>
     public class MobileShop
     {
+        public string model;
+        private bool avaialblity;
+        private List<CustomerImpl> customers = new List<CustomerImpl>();
