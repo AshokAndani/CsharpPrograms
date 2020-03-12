@@ -19,3 +19,17 @@ namespace DesignPatterns.Creational.FactoryPattern
             this.hdd = hdd;
             this.ram = ram;
         }
+	public override string GetCPU()
+        {
+            return this.cpu;
+        }
+        public override string GetHDD()
+        {
+            return this.hdd;
+        }
+        public override string GetRAM()
+        {
+            return this.ram;
+        }
+    }
+}
