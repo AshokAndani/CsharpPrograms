@@ -11,3 +11,8 @@ namespace DesignPatterns.Creational.SingletonPattern
     /// </summary>
     public sealed class NaiveSingleton
     {
+        private static int count = 0;
+        /// <summary>
+        /// declaring the instance which will be assigned throw an static Method
+        /// </summary>
+        private static NaiveSingleton naive;
