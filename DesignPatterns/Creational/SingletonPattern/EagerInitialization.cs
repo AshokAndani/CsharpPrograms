@@ -18,3 +18,16 @@ namespace DesignPatterns.Creational.SingletonPattern
             //// to check the Object created or not
             Console.WriteLine("Eager Pattern is created " + ++count);
         }
+        //// creating a static instance 
+        private static readonly EagerInitialization eager = new EagerInitialization();
+
+        /// <summary>
+        /// public static method which return the EagerPattern object
+        /// </summary>
+        /// <returns>EagerObject</returns>
+        public static EagerInitialization GetEagerPattern()
+        {
+            return eager;
+        }
+    }
+}
