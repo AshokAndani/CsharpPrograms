@@ -23,3 +23,16 @@ namespace DesignPatterns.Creational.SingletonPattern
         /// </summary>
         private StaticConstructorSingleton()
         { }
+
+        /// <summary>
+        ///  Gives the Instance
+        /// </summary>
+        public static StaticConstructorSingleton Instance
+        {
+            get
+            {
+                return instance;
+            }
+        }
+    }
+}
