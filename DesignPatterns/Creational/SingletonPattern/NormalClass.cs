@@ -21,3 +21,13 @@ namespace DesignPatterns.Creational.SingletonPattern
         {
             Console.WriteLine("number of Objects created "+ ++count);
         }
+        /// <summary>
+        /// only public method to create the instance of this class
+        /// </summary>
+        /// <returns>Instance of NormalClass</returns>
+        public static NormalClass GetNormalClass()
+        {
+            return new NormalClass();
+        }
+    }
+}
