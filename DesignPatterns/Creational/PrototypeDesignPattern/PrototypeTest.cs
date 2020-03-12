@@ -10,3 +10,8 @@ namespace DesignPatterns.Creational.PrototypeDesignPattern
     /// </summary>
     class PrototypeTest
     {
+        /// <summary>
+        /// this is a simple static method used to run without creating its class Object
+        /// </summary>
+        public static void DriverMethod()
+        {
