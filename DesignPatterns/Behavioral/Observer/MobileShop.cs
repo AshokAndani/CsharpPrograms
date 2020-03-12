@@ -46,3 +46,12 @@ namespace DesignPatterns.Behavioral.Observer
         {
             this.customers.Add(customer);
         }
+
+        /// <summary>
+        /// to remove the customers who don't need the Notifications
+        /// </summary>
+        /// <param name="customer"></param>
+        public void Remove(CustomerImpl customer)
+        {
+            this.customers.Add(customer);
+        }
