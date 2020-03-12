@@ -10,3 +10,7 @@ namespace DesignPatterns.Creational.SingletonPattern
     /// </summary>
     public class NormalClass
     {
+        /// <summary>
+        /// to count how many instances are created
+        /// </summary>
+        private static int count = 0;
