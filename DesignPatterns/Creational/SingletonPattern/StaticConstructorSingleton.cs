@@ -18,3 +18,8 @@ namespace DesignPatterns.Creational.SingletonPattern
         /// </summary>
         static StaticConstructorSingleton()
         { }
+        /// <summary>
+        /// making the constructor private so that no one should access this class
+        /// </summary>
+        private StaticConstructorSingleton()
+        { }
