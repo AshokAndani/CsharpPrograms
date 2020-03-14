@@ -1,55 +1,85 @@
-﻿using System;
-using DataStructures.UnOrderedList;
-using DataStructures.OrderedLists;
-using DataStructures.Stack;
-using DataStructures.Deque;
-using DataStructures.Queue;
-using DataStructures.HashingFunction;
-
-namespace DataStructures
+﻿// <copyright file="Program.cs" company="BridgeLabz">
+//     BridgeLabs. All rights reserved.
+// </copyright>
+// <author>ASHOKKUMAR</author>
+namespace DesignPatterns
 {
-    class Program
+    using System;
+    using DesignPatterns.Creational.SingletonPattern;
+    using DesignPatterns.Creational.FactoryPattern;
+    using DesignPatterns.Creational.PrototypeDesignPattern;
+    using DesignPatterns.Structural.Adapter;
+    using DesignPatterns.Structural.Facade;
+    using DesignPatterns.Structural.Proxy;
+    using DesignPatterns.Behavioral.Observer;
+    using DesignPatterns.Behavioral.Visitor;
+    using DesignPatterns.Behavioral.Visitor1;
+    using DesignPatterns.Behavioral.Mediator;
+    using DesignPatterns.AutoMapper;
+    using DesignPatterns.Reflection;
+    
+    /// <summary>
+    /// Entry Point class for CLR
+    /// </summary>
+    public class Program
     {
-        static void Main(string[] args)
+        /// <summary>
+        /// Entry Point Method for CLR
+        /// </summary>
+        /// <param name="args">void</param>
+        public static void Main(string[] args)
         {
-            //This is the main Class from which every class objects are created
-            Console.WriteLine("Enter 1 for UnOrderedList.\nEnter 2 for OrderedList " +
-                "\n" +
-                "Enter 3 for BalancedParantheses \n" +
-                "Enter 4 for CashCounter \n" +
-                "Enter 5 for PalidromeCheck \n" +
-                "Enter 6 for BinarySearchTree \n" +
-                "Enter 7 for HashFunction\n" +
-                "Enter 8 for PrimeNumber2Dimension \n" +
-                "Enter 9 for Anagrams in array\n" +
-                "Enter 10 for AnagranToStack\n" +
-                "Enter 11 for AnagranToQue\n" +
-                "Enter 12 for Calender\n" +
-                "Enter 13 for CalenderQue\n" +
-                "Enter 14 for QueToStack");
-            
-            int number = int.Parse(Console.ReadLine());
-            //by using a static method called DriverMethod to invoke the particular class
-            switch(number)
-                {
-                case 0: new Test(); break;
-                case 1: ReadFromFile.DriverMethod(); break;
-                case 2: FileReader.DriverMethod(); break;
-                case 3: BalancedParentheses.DriverMethod(); break;
-                case 4:new CashCounter(); break; 
-                case 5: PalindromeChecker.DriverMethod(); break;
-                case 6:BinarySearchTree.DriverMethod(); break;
-                case 7: HashTable.DriverMethod(); break;
-                case 8:PrimeNumber2Dimension.DriverMethod(); break;
-                case 9:Anagram.DriverMethod(); break;
-                case 10:AnagramToStack.DriverMethod(); break;
-                case 11:AnagramToQue.DriverMethod(); break;
-                case 12:Calender.DriverMethod(); break;
-                case 13:WeeksInQue.DriverMethod(); break;
-                case 14:QueueToStack.DriverMethod(); break;
+            //// asking for the required option
+            Console.WriteLine("Enter 1 for Singleton Pattern\n" +
+                "Enter 2 for Prototype Design Pattern\n" +
+                "Enter 3 for Factory Design Pattern\n" +
+                "Enter 4 for Adapter Design Pattern\n" +
+                "Enter 5 for Facade Pattern\n" +
+                "Enter 6 for Proxy Design Pattern\n" +
+                "Enter 7 for Observer Design Pattern\n" +
+                "Enter 8 for Vistor Design Patter\n" +
+                "Enter 9 for Mediator Design Pattern\n" +
+                "Enter 10 for AutomapManagement\n" +
+                "Enter 11 for Late Binding Test\n" +
+                "Enter 12 for testing Basic classes and methods of Reflection");
 
-                default: Console.WriteLine("invalid Entry"); ; break;
-                }
+            int entered = int.Parse(Console.ReadLine());
+
+            switch (entered)
+            {
+                case 0: 
+                    break;
+                case 1:
+                    SingletonTest.DriverMethod();
+                    break;
+                case 2:
+                    PrototypeTest.DriverMethod();
+                    break;
+                case 3:
+                    TestFactory.DriverMethod();
+                    break;
+                case 4: new AdapterTest();   
+                        break;
+                case 5: FacadeTest.DriverMethod();
+                    break;
+                case 6: ProxyTest.DriverMethod();
+                    break;
+                case 7: ObserverTest.DriverMethod();
+                    break;
+                case 8: VistorPatternTest.DriverMethod();
+                    break;
+                case 9: MediatorTest.DriverMethod();
+                    break;
+                case 10: AutomapManagement.DriverMethod();
+                    break;
+                case 11: ReflectionTest.DriverMethod();
+                    break;
+                case 12: Basics.DriverMethod();
+                    break;
+                default:
+                    Console.WriteLine("Invalid Entry");
+                    break;
+            }
         }
     }
 }
