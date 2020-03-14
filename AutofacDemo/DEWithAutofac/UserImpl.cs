@@ -26,3 +26,25 @@ namespace AutofacDemo.DEWithAutofac
         {
             this.service = service;
         }
+        /// <summary>
+        /// username set to private so it cannot be accessed other than this class
+        /// </summary>
+        private string userName;
+
+        /// <summary>
+        /// username can only be accessed through this property
+        /// </summary>
+        public string UserName
+        {
+            get
+            {
+                return this.userName;
+            }
+            set
+            {
+                if (this.userName == null)
+                {
+                    this.userName = value;
+                }
+            }
+        }
