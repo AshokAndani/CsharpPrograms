@@ -48,3 +48,17 @@ namespace AutofacDemo.DEWithAutofac
                 }
             }
         }
+
+        /// <summary>
+        /// to change the username
+        /// </summary>
+        /// <param name="username"></param>
+        public void ChangeUserName(string username)
+        {
+            this.userName = username;
+
+            //// dependency object's method 
+            service.UserNameChanged(this);
+        }
+    }
+}
