@@ -13,3 +13,16 @@ namespace AutofacDemo.DEWithAutofac
     /// </summary>
     class UserImpl : IUser
     {
+        /// <summary>
+        /// dependency object on which this class depends on
+        /// </summary>
+        private INotificationService service;
+
+        /// <summary>
+        /// constructor which takes the dependency object as parameter
+        /// </summary>
+        /// <param name="service">Service</param>
+        public UserImpl(INotificationService service)
+        {
+            this.service = service;
+        }
