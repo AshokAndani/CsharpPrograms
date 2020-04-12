@@ -4,7 +4,6 @@
 // </copyright>
 // <creator Name="ASHOKKUMAR"/>
 // --------------------------------------------------------------------------------------------------------------------
-
 namespace ApplicationBusiness.Services
 {
     using System;
@@ -90,6 +89,15 @@ namespace ApplicationBusiness.Services
         public async Task<SignInResult> LoginUserAsync(LoginViewModel model)
         {
             return await this.signInManager.PasswordSignInAsync(model.Email, model.Password, isPersistent: false, false);
+        }
+
+        /// <summary>
+        /// Logut the user
+        /// </summary>
+        /// <returns>Logout</returns>
+        public async void LogoutAsync()
+        {
+            await this.signInManager.SignOutAsync();
         }
 
         /// <summary>
