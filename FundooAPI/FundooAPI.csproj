@@ -11,12 +11,12 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="2.1.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\ApplicationBusiness\ApplicationBusiness.csproj" />
     <ProjectReference Include="..\ApplicationRepository\ApplicationRepository.csproj" />
-    <ProjectReference Include="..\Coomon\Common.csproj" />
   </ItemGroup>
 
 </Project>
