@@ -9,6 +9,7 @@ namespace ApplicationRepository.Context
     using System;
     using System.Collections.Generic;
     using System.Text;
+    using Common.Models;
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
     
@@ -24,5 +25,10 @@ namespace ApplicationRepository.Context
         public AppDbContext(DbContextOptions<AppDbContext> options): base(options)
         {
         }
+
+        /// <summary>
+        /// Table for Labels in the Database
+        /// </summary>
+        public DbSet<LabelsModel> Labels { get; set; }
     }
 }
