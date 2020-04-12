@@ -9,6 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ApplicationRepository\ApplicationRepository.csproj" />
     <ProjectReference Include="..\Coomon\Common.csproj" />
   </ItemGroup>
 
