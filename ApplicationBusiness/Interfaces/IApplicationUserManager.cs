@@ -31,6 +31,12 @@ namespace ApplicationBusiness.Interfaces
         /// <param name="model"></param>
         /// <returns></returns>
         Task<SignInResult> LoginUserAsync(LoginViewModel model);
+
+        /// <summary>
+        /// this method logs the login user out
+        /// </summary>
+        /// <returns>Logouts the user</returns>
+        void LogoutAsync();
         
         /// <summary>
         /// Generates the token against the user who forgot the password
