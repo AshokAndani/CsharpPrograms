@@ -11,9 +11,14 @@ namespace ApplicationBusiness.Services
     using System.Text;
     using System.Threading.Tasks;
     using ApplicationBusiness.Interfaces;
+    using CloudinaryDotNet;
     using Common.Models;
+    using Experimental.System.Messaging;
+    using MailKit.Net.Smtp;
     using Microsoft.AspNetCore.Identity;
-    
+    using MimeKit;
+    using MimeKit.Text;
+
     /// <summary>
     /// this class is the implementation of the IApplicationUserManager
     /// </summary>
@@ -23,7 +28,7 @@ namespace ApplicationBusiness.Services
         /// UserManager which manages the User Account
         /// </summary>
         private readonly UserManager<IdentityUser> userManager;
-        
+
         /// <summary>
         /// SignInManager which Manages the Login And Logout of the users
         /// </summary>
@@ -67,16 +72,18 @@ namespace ApplicationBusiness.Services
         /// </summary>
         /// <param name="model">Supplied from body</param>
         /// <returns>Result</returns>
-        public async Task<string> GetResetToken(ForgotPasswordModel model)
+        public async Task<string> GetResetToken(string email)
         {
-            //// finfing the wether the user exists with Email
-            var user = await this.userManager.FindByEmailAsync(model.Email);
-            
+            //// finding the wether the user exists with Email
+            var user = await this.userManager.FindByEmailAsync(email);
+
             //// Checking if the Email is Comfirmed 
-            if (await this.userManager.IsEmailConfirmedAsync(user))
+            if (user != null)
             {
+                //// generating the token
                 var token = await this.userManager.GeneratePasswordResetTokenAsync(user);
-                return token;
+                var NewToken = new { token = token };
+                return NewToken.token;
             }
             return null;
         }
@@ -109,6 +116,90 @@ namespace ApplicationBusiness.Services
         {
             var user = await this.userManager.FindByEmailAsync(model.Email);
             return await this.userManager.ResetPasswordAsync(user, model.Token, model.Password);
+        }
+
+        /// <summary>
+        /// To Retrive the Message from the Que
+        /// </summary>
+        /// <returns>Message</returns>
+        public string RetrieveMessageFromMSMQ()
+        {
+            //// Creating the MessageQueue which fetch the sms from the MS MQ
+            var messageQueue = new MessageQueue(@".\Private$\MyQueue");
+            //// To recieve the Message from the Queue
+            var message = messageQueue.Receive();
+            //// Formatting the incoming message Compulsary
+            message.Formatter = new XmlMessageFormatter(new string[] { "System.String, mscorlib" });
+            //// Converting the Message To ToString
+            var msg = message.Body.ToString();
+            //// Returning the message
+            return msg;
+        }
+
+        /// <summary>
+        /// To Send the Message to the MSMQ
+        /// </summary>
+        /// <param name="message">Sending Message</param>
+        public void SendMassageToMSMQ(string message)
+        {
+            //// initializing the MessageQueue
+            MessageQueue messageQueue;
+            //// Checking if the MessageQueue with Specified Path Exists
+            if (MessageQueue.Exists(@".\Private$\MyQueue"))
+            {
+                //// Creating the object in the same path
+                messageQueue = new MessageQueue(@".\Private$\MyQueue");
+            }
+            else
+            {
+                //// Creating the Object with the new Path
+                messageQueue = MessageQueue.Create(@".\Private$\MyQueue");
+            }
+
+            //// Creating the Message object(MessageQueue fetches the Message object from the Queue)
+            Message msg = new Message();
+            messageQueue.Label = "Token";
+            //// Sending the Message to the Queue
+            messageQueue.Send(message);
+        }
+
+        /// <summary>
+        /// To Send the Mail to the Email
+        /// </summary>
+        /// <param name="link">Link</param>
+        /// <param name="email">Email of the User</param>
+        /// <returns></returns>
+        public dynamic SendMail(string link, string email)
+        {
+            //// preparing the MimeMessage Object
+            var messageToSend = new MimeMessage
+            {
+                //// Details of the Sender
+                Sender = new MailboxAddress("Ashok", "ashok34589@gmail.com"),
+                //// Subject of the content
+                Subject = "Link to Reset your Password"
+            };
+            //// from whom the message to Send
+            messageToSend.From.Add(new MailboxAddress("Ashok", "ashok34589@gmail.com"));
+            //// Body of the Message
+            messageToSend.Body = new TextPart(TextFormat.Html) { Text = link };
+            //// to Whom the Message to Send
+            messageToSend.To.Add(new MailboxAddress("ashok34589@gmail.com"));
+
+            //// Creating the smtp Clint object which is responsible to Connect to the smtp Server and send the Message
+            var client = new SmtpClient();
+            //// Smtp Client Details
+            client.Connect("smtp.gmail.com", 587);
+            //// For our Testing project removing the Authentication
+            client.AuthenticationMechanisms.Remove("XOAUTH2");
+            //// Sender Credentials(Dont forget to hide the Details)
+            client.Authenticate("ashok34589@gmail.com", "ashokbhai");
+            //// this method will send the Message only if Authentiaction is Successfull
+            client.Send(messageToSend);
+            //// After Sending the Message Disconnecting the Connection with the Server
+            client.Disconnect(true);
+            //// Returning True
+            return true;
         }
     }
 }
