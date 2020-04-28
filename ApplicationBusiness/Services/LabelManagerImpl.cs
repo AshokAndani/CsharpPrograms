@@ -45,18 +45,18 @@ namespace ApplicationBusiness.Services
         /// </summary>
         /// <param name="id">from body</param>
         /// <returns>result</returns>
-        public async Task<int> DeleteLabel(int id)
+        public async Task<int> DeleteLabel(int id, string email)
         {
-            return await this.repository.DeleteLabel(id);
+            return await this.repository.DeleteLabel(id, email);
         }
 
         /// <summary>
         /// gets the all the Labels
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<LabelsModel> GetAllLabels()
+        public IEnumerable<LabelsModel> GetAllLabels(string email)
         {
-            return this.repository.GetAllLabels();
+            return this.repository.GetAllLabels(email);
         }
 
         /// <summary>
@@ -64,9 +64,9 @@ namespace ApplicationBusiness.Services
         /// </summary>
         /// <param name="id">From body</param>
         /// <returns>Result</returns>
-        public LabelsModel GetLabel(int id)
+        public LabelsModel GetLabel(int id, string email)
         {
-            return  this.repository.GetLabel(id);
+            return  this.repository.GetLabel(id, email);
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace ApplicationBusiness.Services
         /// <returns>result</returns>
         public async Task<int> UpdateLabel(LabelsModel model)
         {
-            return await this.repository.UpdateLabel(model.Id, model.Label);
+            return await this.repository.UpdateLabel(model);
         }
     }
 }
