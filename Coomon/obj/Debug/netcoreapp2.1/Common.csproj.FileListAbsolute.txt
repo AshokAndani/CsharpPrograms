@@ -1,0 +1,9 @@
+D:\WindowsProjects\FundooApp\FundooAPI\Coomon\bin\Debug\netcoreapp2.1\Common.deps.json
+D:\WindowsProjects\FundooApp\FundooAPI\Coomon\bin\Debug\netcoreapp2.1\Common.dll
+D:\WindowsProjects\FundooApp\FundooAPI\Coomon\bin\Debug\netcoreapp2.1\Common.pdb
+D:\WindowsProjects\FundooApp\FundooAPI\Coomon\obj\Debug\netcoreapp2.1\Common.AssemblyInfoInputs.cache
+D:\WindowsProjects\FundooApp\FundooAPI\Coomon\obj\Debug\netcoreapp2.1\Common.AssemblyInfo.cs
+D:\WindowsProjects\FundooApp\FundooAPI\Coomon\obj\Debug\netcoreapp2.1\Common.dll
+D:\WindowsProjects\FundooApp\FundooAPI\Coomon\obj\Debug\netcoreapp2.1\Common.pdb
+D:\WindowsProjects\FundooApp\FundooAPI\Coomon\obj\Debug\netcoreapp2.1\Common.csprojAssemblyReference.cache
+D:\WindowsProjects\FundooApp\FundooAPI\Coomon\obj\Debug\netcoreapp2.1\Common.csproj.CoreCompileInputs.cache
