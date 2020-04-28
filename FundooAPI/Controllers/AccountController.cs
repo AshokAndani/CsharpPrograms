@@ -8,8 +8,10 @@ namespace FundooAPI.Controllers
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     using System.IdentityModel.Tokens.Jwt;
     using System.Linq;
+    using System.Security.Claims;
     using System.Text;
     using System.Threading.Tasks;
     using ApplicationBusiness.Interfaces;
@@ -32,6 +34,7 @@ namespace FundooAPI.Controllers
         private readonly IConfiguration configuration;
         private readonly IDistributedCache distributedCache;
 
+        
         /// <summary>
         /// Injecting the IAppliactionUserManager in Constructor
         /// </summary>
@@ -75,19 +78,17 @@ namespace FundooAPI.Controllers
                 var result = await this.manager.LoginUserAsync(model);
                 if (result.Succeeded)
                 {
+                    var claim = new[] { new Claim(JwtRegisteredClaimNames.UniqueName, model.Email) };
                     var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:_key"]));
                     var signInCr = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
-
                     var token = new JwtSecurityToken(
                         issuer: configuration["Jwt:_url"],
                         audience: configuration["Jwt:_url"],
+                        claims: claim,
                         expires: DateTime.Now.AddMinutes(60),
                         signingCredentials: signInCr);
                     var FinalToken = new JwtSecurityTokenHandler().WriteToken(token);
-
-                    /// this is to set for Cache
-                    var key = this.distributedCache.GetString(model.Email);
-                    this.distributedCache.SetString(key, FinalToken);
+                     this.distributedCache.SetString("Token", FinalToken);
                     return Ok(new { Token = FinalToken });
                 }
             }
@@ -100,17 +101,30 @@ namespace FundooAPI.Controllers
         /// <param name="model">FromBody</param>
         /// <returns>Result</returns>
         [HttpPost, Route("forgotpassword")]
-        public async Task<IActionResult> ForgotPassword([FromBody]ForgotPasswordModel model)
+        public IActionResult ForgotPassword([Required]string email)
         {
             if (ModelState.IsValid)
             {
+                //// Generating the reset token
+                var resettoken = this.manager.GetResetToken(email).Result;
+                
+                //// making the link of the reset token
+              ///  var link = Url.Action("resetpassword", "Account",
+                   /// new { email = email, token = resettoken }, Request.Scheme);
+                
+                //// sending the reset link to the MSMQ
+               this.manager.SendMassageToMSMQ(resettoken);
 
-                var resettoken = await this.manager.GetResetToken(model);
-                var link = Url.Action("resetpassword", "Account",
-                    new { email = model.Email, token = resettoken }, Request.Scheme);
-                return Ok(new { Reset_Password_Link = link });
+                //// Retrieving the stored link from the MSMQ
+               var messageFromMSMQ = this.manager.RetrieveMessageFromMSMQ();
+                
+                //// Sending the Mail to the respective Mail User
+               manager.SendMail(messageFromMSMQ, email);
+
+                //// if everything goes right returning Success Status
+                return this.Ok("We Have An mail To reset the Password");
             }
-            return BadRequest();
+            return this.BadRequest();
         }
 
         /// <summary>
@@ -119,14 +133,14 @@ namespace FundooAPI.Controllers
         /// <param name="model">FromBody</param>
         /// <returns>Result</returns>
         [HttpPost, Route("resetpassword")]
-        public async Task<IActionResult> ResetPassword([FromBody]ResetPasswordModel model)
+        public async Task<IActionResult> ResetPassword(ResetPasswordModel model)
         {
             if (ModelState.IsValid)
             {
                 var result = await this.manager.ResetPasswordAsync(model);
                 if (result.Succeeded)
                 {
-                    return Ok(new { ResetStatus = "Success" });
+                    return Ok(new { ResetStatus = "Password reset Successfull" });
                 }
             }
             return BadRequest();
@@ -154,7 +168,7 @@ namespace FundooAPI.Controllers
         /// <summary>
         /// To Logout the User
         /// </summary>
-        /// <returns></returns>
+        /// <returns>To Logout</returns>
         [HttpGet, Route("logout")]
         public IActionResult Logout()
         {
