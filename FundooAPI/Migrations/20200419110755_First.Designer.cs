@@ -4,14 +4,16 @@ using ApplicationRepository.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FundooAPI.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200419110755_First")]
+    partial class First
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -42,12 +44,10 @@ namespace FundooAPI.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Email");
+                    b.Property<int>("LBNumber");
 
                     b.Property<string>("Label")
                         .IsRequired();
-
-                    b.Property<int>("NoteId");
 
                     b.HasKey("Id");
 
@@ -77,6 +77,8 @@ namespace FundooAPI.Migrations
                     b.Property<bool>("IsTrash");
 
                     b.Property<DateTime?>("ModeifiedDate");
+
+                    b.Property<int>("NoteId");
 
                     b.Property<string>("Reminder");
 
