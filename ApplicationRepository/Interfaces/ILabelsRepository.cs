@@ -18,9 +18,9 @@ namespace ApplicationRepository.Interfaces
     public interface ILabelsRepository
     {
         Task<int> AddLabel(LabelsModel model);
-        LabelsModel GetLabel(int id);
-        IEnumerable<LabelsModel> GetAllLabels();
-        Task<int> UpdateLabel(int id, string Label);
-        Task<int> DeleteLabel(int Id);
+        LabelsModel GetLabel(int id, string email);
+        IEnumerable<LabelsModel> GetAllLabels(string email);
+        Task<int> UpdateLabel(LabelsModel model);
+        Task<int> DeleteLabel(int Id, string email);
     }
 }
