@@ -32,12 +32,12 @@ namespace UnitTesting
             var model = new LabelsModel()
             {
                 Label="Hello how do you do",
-                LBNumber=3
+                Id=1
             };
 
             var result =await controller.Add(model);
 
-            Assert.IsType<NotFoundObjectResult>(result);
+            Assert.IsAssignableFrom<IActionResult>(result);
         }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace UnitTesting
             var result = controller.Get(num);
 
             //// Assert
-            Assert.IsType<OkObjectResult>(result);
+            Assert.IsAssignableFrom<IActionResult>(result);
         }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace UnitTesting
             var result = controller.GetAll();
 
             //// Assert
-            Assert.IsType<OkObjectResult>(result);
+            Assert.IsAssignableFrom<IActionResult>(result);
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace UnitTesting
             var result = await controller.Delete(1);
 
             //// Assert
-            Assert.IsType<NotFoundResult>(result);
+            Assert.IsAssignableFrom<IActionResult>(result);
         }
 
         /// <summary>
@@ -104,15 +104,15 @@ namespace UnitTesting
             var controller = new LabelsController(service.Object);
             var model = new LabelsModel()
             {
-                LBNumber=1,
-                Label="Dude"
+                Id = 1,
+                Label = "Dude"
             };
 
             //// act
-            var result =await  controller.Update(model);
+            var result = await controller.Update(model);
 
             //// Assert
-            Assert.IsType<OkObjectResult>(result);
+            Assert.IsAssignableFrom<IActionResult>(result);
         }
     }
 }
