@@ -8,6 +8,7 @@ namespace FundooAPI.Controllers
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     using System.Linq;
     using System.Threading.Tasks;
     using ApplicationBusiness.Interfaces;
@@ -18,7 +19,7 @@ namespace FundooAPI.Controllers
     /// <summary>
     /// this is the Labels Controller class
     /// </summary>
-    ////[Authorize]
+    [Authorize]
     [Route("api/[controller]")]
     public class LabelsController : Controller
     {
@@ -46,6 +47,16 @@ namespace FundooAPI.Controllers
         {
             if (ModelState.IsValid)
             {
+                string currentUser;
+                try
+                {
+                    currentUser = this.User.Identity.Name;
+                }
+                catch(Exception e)
+                {
+                    currentUser = null;
+                }
+                model.Email = currentUser;
                 var result = await this.labelManager.AddLabel(model);
                 if (result==1)
                 {
@@ -66,6 +77,16 @@ namespace FundooAPI.Controllers
         {
             if (ModelState.IsValid)
             {
+                string currentUser;
+                try
+                {
+                    currentUser = this.User.Identity.Name;
+                }
+                catch(Exception e)
+                {
+                    currentUser = null;
+                }
+                model.Email = currentUser;
                 var result = await this.labelManager.UpdateLabel(model);
                 return Ok(result);
             }
@@ -77,15 +98,24 @@ namespace FundooAPI.Controllers
         /// </summary>
         /// <param name="id">from body</param>
         /// <returns>Result</returns>
-        [HttpGet, Route("get")]
+        [HttpPost, Route("get")]
         public IActionResult Get([FromBody]int id)
         {
-            var model = this.labelManager.GetLabel(id);
+            string currentUser;
+            try
+            {
+                currentUser = this.User.Identity.Name;
+            }
+            catch (Exception e)
+            {
+                currentUser = null;
+            }
+            var model = this.labelManager.GetLabel(id,currentUser);
             if (model != null)
             {
-                return this.NotFound();
-            }
             return this.Ok(model);
+            }
+            return this.NotFound();
         }
 
         /// <summary>
@@ -96,7 +126,16 @@ namespace FundooAPI.Controllers
         [HttpDelete, Route("delete")]
         public async Task<IActionResult> Delete([FromBody]int id)
         {
-            var result = await this.labelManager.DeleteLabel(id);
+            string currentUser;
+            try
+            {
+                currentUser = this.User.Identity.Name;
+            }
+            catch (Exception e)
+            {
+                currentUser = null;
+            }
+            var result = await this.labelManager.DeleteLabel(id, currentUser);
             if (result == 1)
             {
                 return this.Ok(result);
@@ -108,10 +147,19 @@ namespace FundooAPI.Controllers
         /// gets all the labels
         /// </summary>
         /// <returns>Result</returns>
-        [HttpGet, Route("getall")]
+        [HttpPost, Route("getall")]
         public IActionResult GetAll()
         {
-            var result = this.labelManager.GetAllLabels();
+            string currentUser;
+            try
+            {
+                currentUser = this.User.Identity.Name;
+            }
+            catch (Exception e)
+            {
+                currentUser = null;
+            }
+            var result = this.labelManager.GetAllLabels(currentUser);
             if (result != null)
             {
                 return Ok(result);
