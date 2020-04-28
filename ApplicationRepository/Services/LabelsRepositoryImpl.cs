@@ -42,7 +42,7 @@ namespace ApplicationRepository.Services
         public async Task<int> AddLabel(LabelsModel model)
         {
             //// checking wether the same labelmodel exists in the table
-            var exists = this.context.Labels.FirstOrDefault(o => o.LBNumber == model.LBNumber);
+            var exists = this.context.Labels.FirstOrDefault(o => o.Id == model.Id);
             
             //// if not exists then adding the data to the table
             if(exists==null)
@@ -58,9 +58,9 @@ namespace ApplicationRepository.Services
         /// </summary>
         /// <param name="id">from body</param>
         /// <returns>Resul</returns>
-        public async Task<int> DeleteLabel(int id)
+        public async Task<int> DeleteLabel(int id, string email)
         {
-            var result = this.context.Labels.FirstOrDefault(o => o.LBNumber == id);
+            var result = this.context.Labels.FirstOrDefault(o => o.Id == id && o.Email==email);
             if(result!=null)
             {
                 this.context.Labels.Remove(result);
@@ -73,9 +73,9 @@ namespace ApplicationRepository.Services
         /// Gets all the Labels
         /// </summary>
         /// <returns>Labels</returns>
-        public IEnumerable<LabelsModel> GetAllLabels()
+        public IEnumerable<LabelsModel> GetAllLabels(string email)
         {
-            return this.context.Labels;
+            return this.context.Labels.Where(o=> o.Email==email);
         }
 
         /// <summary>
@@ -83,9 +83,9 @@ namespace ApplicationRepository.Services
         /// </summary>
         /// <param name="id">from body</param>
         /// <returns>result</returns>
-        public LabelsModel GetLabel(int id)
+        public LabelsModel GetLabel(int id, string email)
         {
-            var result = this.context.Labels.FirstOrDefault(o => o.LBNumber == id);
+            var result = this.context.Labels.FirstOrDefault(o => o.Id== id);
             if(result!=null)
             {
                 return result;
@@ -99,13 +99,14 @@ namespace ApplicationRepository.Services
         /// <param name="id">from body</param>
         /// <param name="label">new label from body</param>
         /// <returns></returns>
-        public async Task<int> UpdateLabel(int id, string label)
+        public async Task<int> UpdateLabel(LabelsModel model)
         {
 
-            var Label = this.context.Labels.FirstOrDefault(o => o.LBNumber == id);
-            if (Label != null && label != null)
+            var Label = this.context.Labels.FirstOrDefault(o => o.Id== model.Id);
+            if (Label != null)
             {
-                Label.Label = label;
+                Label.Label = model.Label;
+                Label.Email = model.Email;
                 this.context.Labels.Update(Label);
                 return await this.context.SaveChangesAsync();
             }
