@@ -30,5 +30,15 @@ namespace ApplicationRepository.Context
         /// Table for Labels in the Database
         /// </summary>
         public DbSet<LabelsModel> Labels { get; set; }
+
+        /// <summary>
+        /// table for Notes in the Database
+        /// </summary>
+        public DbSet<NotesModel> Notes { get; set; }
+        
+        /// <summary>
+        /// table for Collaborators in the Database
+        /// </summary>
+        public DbSet<CollaboratorModel> Collaborators { get; set; }
     }
 }
