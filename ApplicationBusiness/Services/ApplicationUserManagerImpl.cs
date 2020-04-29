@@ -28,6 +28,7 @@ namespace ApplicationBusiness.Services
         /// UserManager which manages the User Account
         /// </summary>
         private readonly UserManager<IdentityUser> userManager;
+        private readonly IConfiguration configuration;
 
         /// <summary>
         /// SignInManager which Manages the Login And Logout of the users
@@ -39,10 +40,11 @@ namespace ApplicationBusiness.Services
         /// </summary>
         /// <param name="userManager">Injects UserManager</param>
         /// <param name="signInManager">Injects SignInManager</param>
-        public ApplicationUserManagerImpl(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
+        public ApplicationUserManagerImpl(IConfiguration configuration, UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
+            this.configuration=conconfiguration;
         }
 
         /// <summary>
@@ -175,12 +177,12 @@ namespace ApplicationBusiness.Services
             var messageToSend = new MimeMessage
             {
                 //// Details of the Sender
-                Sender = new MailboxAddress("Ashok", "ashok34589@gmail.com"),
+                Sender = new MailboxAddress("Ashok", configuration["Account:Email"]),
                 //// Subject of the content
                 Subject = "Link to Reset your Password"
             };
             //// from whom the message to Send
-            messageToSend.From.Add(new MailboxAddress("Ashok", "ashok34589@gmail.com"));
+            messageToSend.From.Add(new MailboxAddress("Ashok", configuration["Account:Email"]));
             //// Body of the Message
             messageToSend.Body = new TextPart(TextFormat.Html) { Text = link };
             //// to Whom the Message to Send
@@ -193,7 +195,7 @@ namespace ApplicationBusiness.Services
             //// For our Testing project removing the Authentication
             client.AuthenticationMechanisms.Remove("XOAUTH2");
             //// Sender Credentials(Dont forget to hide the Details)
-            client.Authenticate("ashok34589@gmail.com", "ashokbhai");
+            client.Authenticate(configuration["Account:Email"], configuration["Account:Password"]);
             //// this method will send the Message only if Authentiaction is Successfull
             client.Send(messageToSend);
             //// After Sending the Message Disconnecting the Connection with the Server
