@@ -218,5 +218,27 @@ namespace ApplicationBusiness.Services
             }
             return null;
         }
+
+        public List<NotesModel> SearchInNotes(string email, string word)
+        {
+            if(word!=null)
+            {
+                return this.repository.Search(email, word);
+            }
+            return null;
+        }
+
+        public List<LabelsModel> SearchInLabels(string email, string word)
+        {
+            if(word!=null)
+            {
+                return this.repository.SearchLabels(email, word);
+            }
+            return null;
+        }
+        public dynamic SendPushNotification(string DeviceToken, string msg, string title)
+        {
+            return this.repository.SendPushNotification(DeviceToken, msg, title);
+        }
     }
 }
