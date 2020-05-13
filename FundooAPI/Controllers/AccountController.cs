@@ -16,6 +16,8 @@ namespace FundooAPI.Controllers
     using System.Threading.Tasks;
     using ApplicationBusiness.Interfaces;
     using Common.Models;
+    using Microsoft.AspNetCore.Authentication.Cookies;
+    using Microsoft.AspNetCore.Cors;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Caching.Distributed;
     using Microsoft.Extensions.Configuration;
@@ -78,17 +80,9 @@ namespace FundooAPI.Controllers
                 var result = await this.manager.LoginUserAsync(model);
                 if (result.Succeeded)
                 {
-                    var claim = new[] { new Claim(JwtRegisteredClaimNames.UniqueName, model.Email) };
-                    var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:_key"]));
-                    var signInCr = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
-                    var token = new JwtSecurityToken(
-                        issuer: configuration["Jwt:_url"],
-                        audience: configuration["Jwt:_url"],
-                        claims: claim,
-                        expires: DateTime.Now.AddMinutes(60),
-                        signingCredentials: signInCr);
-                    var FinalToken = new JwtSecurityTokenHandler().WriteToken(token);
-                     this.distributedCache.SetString("Token", FinalToken);
+                    //// GetJwtToken is an Explicit method that creates the jwt token
+                    var FinalToken = this.manager.GetJwtToken(model.Email);
+                    this.distributedCache.SetString("Token", FinalToken);
                     return Ok(new { Token = FinalToken });
                 }
             }
@@ -170,10 +164,40 @@ namespace FundooAPI.Controllers
         /// </summary>
         /// <returns>To Logout</returns>
         [HttpGet, Route("logout")]
-        public IActionResult Logout()
+        public async Task<IActionResult> Logout()
         {
             manager.LogoutAsync();
             return Ok("Logout Successfull");
+        }
+        [HttpPost, Route("google")]
+        public async Task<IActionResult> ExternalLogin()
+        {
+            var redirectUrl = Url.Action("ExternalLoginCallBack", "Account");
+            var provider = (await this.manager.GetExternalAuthenticationSchemesAsync()).ToList().First();
+            var properties = this.manager.ConfigureExternalAuthenticationProperties(provider.Name,redirectUrl);
+            var result=new ChallengeResult(provider.Name, properties);
+            return result;
+        }
+        [Route("ExternalLoginCallBack"), HttpGet]
+        public async Task<IActionResult> GoogleLogin(string returnUrl = null, string remoteError = null)
+        {
+            if (remoteError != null)
+            {
+                return this.BadRequest("got error from External Provider");
+            }
+            var info = await this.manager.GetExternalLoginInfoAsync();
+            if (info == null)
+            {
+                return this.BadRequest("Get error while loading the login informantion");
+            }
+            var SignInResult = await this.manager.ExternalLoginSignInAsync(info);
+            if (SignInResult.Succeeded)
+            {
+                var FinalToken = this.manager.GetJwtToken(info.ProviderDisplayName);
+                this.distributedCache.SetString("Token", FinalToken);
+                return Ok(new { Token = FinalToken });
+            }
+            return this.BadRequest();
         }
     }
 }
