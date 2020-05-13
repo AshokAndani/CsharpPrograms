@@ -127,5 +127,8 @@ namespace ApplicationRepository.Interfaces
         List<NotesModel> GetCollabNotes(string sender);
 
         dynamic GetNotesLabels(int id, string email);
+        dynamic SendPushNotification(string DeviceToken, string msg, string title);
+        List<NotesModel> Search(string email, string word);
+        List<LabelsModel> SearchLabels(string email, string word);
     }
 }
