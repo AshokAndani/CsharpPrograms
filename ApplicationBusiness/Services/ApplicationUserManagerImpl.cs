@@ -8,6 +8,8 @@ namespace ApplicationBusiness.Services
 {
     using System;
     using System.Collections.Generic;
+    using System.IdentityModel.Tokens.Jwt;
+    using System.Security.Claims;
     using System.Text;
     using System.Threading.Tasks;
     using ApplicationBusiness.Interfaces;
@@ -15,7 +17,10 @@ namespace ApplicationBusiness.Services
     using Common.Models;
     using Experimental.System.Messaging;
     using MailKit.Net.Smtp;
+    using Microsoft.AspNetCore.Authentication;
     using Microsoft.AspNetCore.Identity;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.IdentityModel.Tokens;
     using MimeKit;
     using MimeKit.Text;
 
@@ -28,23 +33,24 @@ namespace ApplicationBusiness.Services
         /// UserManager which manages the User Account
         /// </summary>
         private readonly UserManager<IdentityUser> userManager;
-        private readonly IConfiguration configuration;
 
         /// <summary>
         /// SignInManager which Manages the Login And Logout of the users
         /// </summary>
         private readonly SignInManager<IdentityUser> signInManager;
+        private readonly IConfiguration configuration;
 
         /// <summary>
         /// Constructor for injecting the UserManager and SignInManager
         /// </summary>
         /// <param name="userManager">Injects UserManager</param>
         /// <param name="signInManager">Injects SignInManager</param>
-        public ApplicationUserManagerImpl(IConfiguration configuration, UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
+        public ApplicationUserManagerImpl(UserManager<IdentityUser> userManager,
+            SignInManager<IdentityUser> signInManager, IConfiguration configuration)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
-            this.configuration=conconfiguration;
+            this.configuration = configuration;
         }
 
         /// <summary>
@@ -177,12 +183,12 @@ namespace ApplicationBusiness.Services
             var messageToSend = new MimeMessage
             {
                 //// Details of the Sender
-                Sender = new MailboxAddress("Ashok", configuration["Account:Email"]),
+                Sender = new MailboxAddress("Ashok", "ashok34589@gmail.com"),
                 //// Subject of the content
                 Subject = "Link to Reset your Password"
             };
             //// from whom the message to Send
-            messageToSend.From.Add(new MailboxAddress("Ashok", configuration["Account:Email"]));
+            messageToSend.From.Add(new MailboxAddress("Ashok", "ashok34589@gmail.com"));
             //// Body of the Message
             messageToSend.Body = new TextPart(TextFormat.Html) { Text = link };
             //// to Whom the Message to Send
@@ -195,13 +201,44 @@ namespace ApplicationBusiness.Services
             //// For our Testing project removing the Authentication
             client.AuthenticationMechanisms.Remove("XOAUTH2");
             //// Sender Credentials(Dont forget to hide the Details)
-            client.Authenticate(configuration["Account:Email"], configuration["Account:Password"]);
+            client.Authenticate("ashok34589@gmail.com", "ashokbhai");
             //// this method will send the Message only if Authentiaction is Successfull
             client.Send(messageToSend);
             //// After Sending the Message Disconnecting the Connection with the Server
             client.Disconnect(true);
             //// Returning True
             return true;
+        }
+        public AuthenticationProperties ConfigureExternalAuthenticationProperties(string provider, string redirectUrl)
+        {
+           return this.signInManager.ConfigureExternalAuthenticationProperties(provider, redirectUrl);
+        }
+        public  async Task<IEnumerable<AuthenticationScheme>> GetExternalAuthenticationSchemesAsync()
+        {
+            return await this.signInManager.GetExternalAuthenticationSchemesAsync();
+        }
+        public async Task<ExternalLoginInfo> GetExternalLoginInfoAsync()
+        {
+            return await this.signInManager.GetExternalLoginInfoAsync();
+        }
+        public async Task<SignInResult> ExternalLoginSignInAsync(ExternalLoginInfo info)
+        {
+            return await this.signInManager.ExternalLoginSignInAsync(info.LoginProvider, info.ProviderKey
+                , isPersistent: false, bypassTwoFactor: true);
+        }
+        public string GetJwtToken(string email)
+        {
+            var claim = new[] { new Claim(JwtRegisteredClaimNames.UniqueName, email) };
+            var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:_key"]));
+            var signInCr = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
+            var token = new JwtSecurityToken(
+                issuer: configuration["Jwt:_url"],
+                audience: configuration["Jwt:_url"],
+                claims: claim,
+                expires: DateTime.Now.AddMinutes(60),
+                signingCredentials: signInCr);
+            var FinalToken = new JwtSecurityTokenHandler().WriteToken(token);
+            return FinalToken;
         }
     }
 }
