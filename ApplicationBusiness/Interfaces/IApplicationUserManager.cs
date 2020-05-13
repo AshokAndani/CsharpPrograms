@@ -11,6 +11,7 @@ namespace ApplicationBusiness.Interfaces
     using System.Text;
     using System.Threading.Tasks;
     using Common.Models;
+    using Microsoft.AspNetCore.Authentication;
     using Microsoft.AspNetCore.Identity;
 
     /// <summary>
@@ -79,5 +80,10 @@ namespace ApplicationBusiness.Interfaces
         /// <param name="email">email of the user</param>
         /// <returns>Result</returns>
         dynamic SendMail(string link,string email);
+        AuthenticationProperties ConfigureExternalAuthenticationProperties(string provider, string redirectUrl);
+        Task<IEnumerable<AuthenticationScheme>> GetExternalAuthenticationSchemesAsync();
+        Task<ExternalLoginInfo> GetExternalLoginInfoAsync();
+        Task<SignInResult> ExternalLoginSignInAsync(ExternalLoginInfo info);
+        string GetJwtToken(string email);
     }
 }
