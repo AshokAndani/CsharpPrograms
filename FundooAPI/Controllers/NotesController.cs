@@ -440,5 +440,53 @@ namespace FundooAPI.Controllers
             }
             return this.NoContent();
         }
+        [HttpGet, Route("searchinnotes")]
+        public IActionResult SearchInNotes(string word)
+        {
+            string CurrentUser;
+            try
+            {
+                CurrentUser = this.User.Identity.Name;
+            }
+            catch
+            {
+                CurrentUser = null;
+            }
+            var result = this.manager.SearchInNotes(CurrentUser, word);
+            if (result != null)
+            {
+                return this.Ok(result);
+            }
+            return this.NoContent();
+        }
+        [HttpGet, Route("searchinLabels")]
+        public IActionResult SearchInLabels(string word)
+        {
+            string CurrentUser;
+            try
+            {
+                CurrentUser = this.User.Identity.Name;
+            }
+            catch
+            {
+                CurrentUser = null;
+            }
+            var result = this.manager.SearchInLabels(CurrentUser, word);
+            if (result != null)
+            {
+                return this.Ok(result);
+            }
+            return this.NoContent();
+        }
+        [HttpPost, Route("Sendnotification")]
+        public IActionResult SendPushNotification(string deviceID, string sms, string title)
+        {
+            var result = this.manager.SendPushNotification(deviceID, sms, title);
+            if(result!=null)
+            {
+                return this.Ok(result);
+            }
+            return this.NotFound();
+        }
     }
 }

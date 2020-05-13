@@ -98,6 +98,13 @@ namespace FundooAPI
                 };
             });
 
+            services.AddAuthentication()
+                .AddGoogle(options =>
+                {
+                    options.ClientId = "370645616796-vu1iuhckro7aff4cj7vmorur1c274553.apps.googleusercontent.com";
+                    options.ClientSecret = "T9cSmoXlDJJrWKGXcHGJK1pQ";
+                });
+
             ////Adding the Swagger
             services.AddSwaggerGen(options =>
             {
@@ -120,29 +127,37 @@ namespace FundooAPI
                 options.Configuration = "localhost:6379";
                 options.InstanceName = "FundooNotes";
             });
+
+            //services.AddCors(options=>
+            //options.AddDefaultPolicy(builder=>
+            //builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()));
         }
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
-            {
-
-
+            { 
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseHttpsRedirection();
 
             //// Using the Authentication
             app.UseAuthentication();
 
-            app.UseMvc();
+            
+            
             //// Using the Swagger
             app.UseSwagger();
             //// Setting up the Swagger Endpoints
+            
             app.UseSwaggerUI(options =>
             {
                 options.SwaggerEndpoint("/swagger/V2/Swagger.json", "FundooApplication");
             });
+            app.UseMvc();
         }
     }
 }
