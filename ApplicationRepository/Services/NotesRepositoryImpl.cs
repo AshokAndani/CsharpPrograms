@@ -8,7 +8,9 @@ namespace ApplicationRepository.Services
 {
     using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Linq;
+    using System.Net;
     using System.Text;
     using ApplicationRepository.Context;
     using ApplicationRepository.Interfaces;
@@ -96,7 +98,7 @@ namespace ApplicationRepository.Services
         /// <returns></returns>
         public int Archive(string email, int id)
         {
-            var note = this.context.Notes.FirstOrDefault(o => o.Id== id && o.Email == email && o.IsTrash == false);
+            var note = this.context.Notes.FirstOrDefault(o => o.Id == id && o.Email == email && o.IsTrash == false);
             if (note != null)
             {
                 if (note.IsArchive == false)
@@ -145,12 +147,12 @@ namespace ApplicationRepository.Services
             if (CacheString == null)
             {
                 var tempList = this.PutListToCache(email);
-                return tempList.Find(o => o.IsArchive == false && o.IsTrash == false && o.Email == email && o.Id== id);
+                return tempList.Find(o => o.IsArchive == false && o.IsTrash == false && o.Email == email && o.Id == id);
             }
             else
             {
                 var tempList = this.getListFromCache("noteList");
-                return tempList.Find(o => o.IsArchive == false && o.IsTrash == false && o.Email == email && o.Id== id);
+                return tempList.Find(o => o.IsArchive == false && o.IsTrash == false && o.Email == email && o.Id == id);
             }
         }
 
@@ -210,7 +212,7 @@ namespace ApplicationRepository.Services
         /// <returns></returns>
         public int Pin(string email, int id)
         {
-            var note = this.context.Notes.FirstOrDefault(o => o.Id== id && o.Email == email);
+            var note = this.context.Notes.FirstOrDefault(o => o.Id == id && o.Email == email);
             if (note != null)
             {
                 if (note.IsPin == false)
@@ -245,7 +247,7 @@ namespace ApplicationRepository.Services
         /// <returns></returns>
         public int RemoveNote(string email, int id)
         {
-            var note = this.context.Notes.FirstOrDefault(o => o.Id== id && o.Email == email);
+            var note = this.context.Notes.FirstOrDefault(o => o.Id == id && o.Email == email);
             if (note != null)
             {
                 this.context.Notes.Remove(note);
@@ -262,7 +264,7 @@ namespace ApplicationRepository.Services
         /// <returns></returns>
         public int Trash(string email, int id)
         {
-            var note = this.context.Notes.FirstOrDefault(o => o.Id== id && o.Email == email);
+            var note = this.context.Notes.FirstOrDefault(o => o.Id == id && o.Email == email);
             if (note != null)
             {
                 if (note.IsTrash == false)
@@ -296,7 +298,7 @@ namespace ApplicationRepository.Services
         /// <returns></returns>
         public int UpdateNote(NotesModel model)
         {
-            var existing = this.context.Notes.FirstOrDefault(o => o.Id== model.Id);
+            var existing = this.context.Notes.FirstOrDefault(o => o.Id == model.Id);
             if (existing != null)
             {
                 //// changing only updated fields
@@ -387,6 +389,53 @@ namespace ApplicationRepository.Services
                     NoteImage = note.Image,
                     NoteReminder = note.Reminder,
                 }).ToList();
+            return result;
+        }
+
+        public dynamic SendPushNotification(string DeviceToken, string msg, string title)
+        {
+            string serverKey = "AAAAXAVjc2c:APA91bEl-9-9f1TbXe0FCRW7IEokbP3MwVwutMTPU40vWN8g9obU9qF3QycNsFq_tltrihPikqjg05Yh8Oo4Ik7znZ7JNwG76awCl_Ahokj3mEEBvLiVxeYVR8SYvnNwZeNXYCRoKGIz";
+            string senderId = "395227394919";
+            var result = "-1";
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create("https://fcm.googleapis.com/fcm/send");
+            httpWebRequest.ContentType = "application/json";
+            httpWebRequest.Headers.Add(string.Format("Authorization: key={0}", serverKey));
+            httpWebRequest.Headers.Add(string.Format("Sender: id={0}", senderId));
+            httpWebRequest.Method = "POST";
+            var payload = new
+            {
+                to = DeviceToken,
+                priority = "high",
+                content_available = true,
+                notification = new
+                {
+                    body = msg,
+                    title = title
+                },
+            };
+            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+            {
+                string json = JsonConvert.SerializeObject(payload);
+                streamWriter.Write(json);
+                streamWriter.Flush();
+            }
+            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+            {
+                result = streamReader.ReadToEnd();
+            }
+            return null;
+        }
+
+        public List<NotesModel> Search(string email, string word)
+        {
+            var result = this.context.Notes.Where(o =>o.Email==email && (o.Description.Contains(word)|| o.Title.Contains(word)
+            ||o.Reminder.Contains(word))).ToList();
+            return result;
+        }
+        public List<LabelsModel> SearchLabels(string email, string word)
+        {
+            var result = this.context.Labels.Where(o => o.Email == email && o.Label.Contains(word)).ToList();
             return result;
         }
     }
