@@ -130,5 +130,8 @@ namespace ApplicationBusiness.Interfaces
         /// <param name="email"></param>
         /// <returns></returns>
         dynamic GetNotLabels(int id, string email);
+        List<NotesModel> SearchInNotes(string email, string word);
+        List<LabelsModel> SearchInLabels(string email, string word);
+        dynamic SendPushNotification(string DeviceToken, string msg, string title);
     }
 }
