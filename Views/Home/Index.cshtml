@@ -1,0 +1,66 @@
+﻿<div class="container">
+    <div class="row">
+        <div class="col-lg-4 col-lg-offset-3">
+        <div style="margin-top:30px">
+            <h3 class="center-block">Upload The Files Here</h3>
+            <input type="file" id="uploadFile" name="file"  class="input-lg active"/>
+            <a href="#" id="btnUpload" class="btn btn-success form-control">Upload file</a></div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+
+        $(document).ready(function () {
+            $('#btnUpload').click(function () {
+                var input= $('#uploadFile')[0].files[0];
+                alert("Uploading the File Press OK");
+                UploadFile(input);
+            });
+        });
+
+        function Upload(chunk, FileName, PartNumber, partCount) {
+            var formData = new FormData();
+            formData.append('file', chunk, FileName);
+            $.ajax({
+                type: "POST",
+                ///url: 'http://localhost:50330/Home/UploadFile/',
+                url: 'http://localhost:5000/Home/UploadFile/',
+                contentType: false,
+                processData: false,
+                data: formData,
+                failure: function (response) {
+                    Upload(chunk, FileName);
+                },
+                success: function (response) {
+                    if (partCount == PartNumber) {
+                        alert();
+                    }
+                }
+            });
+        }
+
+        function UploadFile(TargetFile) {
+            var ChunkFiles = [];
+            var file = TargetFile;//// 20*1024*1024
+            var BufferSize = 50 * (1024 * 1024);
+            var StartPos = 0;
+            var endPos = BufferSize;
+            var FileSize = file.size;
+
+            while (StartPos < FileSize) {
+                ChunkFiles.push(file.slice(StartPos, endPos));
+                StartPos = endPos;
+                endPos = StartPos + BufferSize;
+            }
+            var PartCount = 0;
+            var TotalParts = ChunkFiles.length;
+            while (chunk = ChunkFiles.shift()) {
+                PartCount++;
+                var FileName = file.name + ".part_" + PartCount + "." + TotalParts;
+                Upload(chunk, FileName, PartCount, TotalParts);
+            }
+        }
+    </script>
+}
