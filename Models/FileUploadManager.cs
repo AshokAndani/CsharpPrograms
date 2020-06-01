@@ -46,21 +46,18 @@ namespace ChunkFileUploads.Models
                     bool flag = true;
                     if (flag)
                     {
-                        using (var ParentFile = new FileStream(ActualFilePath, FileMode.Create))
+                        var ParentStream = new FileStream(ActualFilePath, FileMode.Create);
+                        FileList.ForEach(file =>
                         {
-                            foreach (var file in FileList)
-                            {
-                                using (var ChildFile = new FileStream(file.Value, FileMode.Open))
-                                {
-                                    ChildFile.CopyTo(ParentFile);
-                                    ChildFile.Close();
-                                }
-                                System.IO.File.Delete(file.Value);
-                            }
-                            ParentFile.Close();
-                            //// FileList.ForEach(x => System.IO.File.Delete(x.Value));
-                            flag = false;
-                        }
+                            var ChildStream = new FileStream(file.Value, FileMode.Open);
+                            ChildStream.CopyTo(ParentStream);
+                            ChildStream.Close();
+                            ChildStream.Flush();
+                            System.IO.File.Delete(file.Value);
+                        });
+                        ParentStream.Flush();
+                        ParentStream.Close();
+                        flag = false;
                     }
                 }
             }
